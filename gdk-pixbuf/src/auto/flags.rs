@@ -2,8 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use bitflags::bitflags;
-use glib::translate::*;
+use glib::{bitflags::bitflags, translate::*};
 use std::fmt;
 
 bitflags! {

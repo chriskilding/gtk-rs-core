@@ -2,8 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use bitflags::bitflags;
-use glib::{translate::*, value::FromValue, value::ToValue, StaticType, Type};
+use glib::{bitflags::bitflags, prelude::*, translate::*, Type};
 use std::fmt;
 
 bitflags! {
@@ -73,7 +72,7 @@ impl glib::value::ValueType for FontMask {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for FontMask {
+unsafe impl<'a> glib::value::FromValue<'a> for FontMask {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -176,7 +175,7 @@ impl glib::value::ValueType for LayoutDeserializeFlags {
 
 #[cfg(feature = "v1_50")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v1_50")))]
-unsafe impl<'a> FromValue<'a> for LayoutDeserializeFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for LayoutDeserializeFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -285,7 +284,7 @@ impl glib::value::ValueType for LayoutSerializeFlags {
 
 #[cfg(feature = "v1_50")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v1_50")))]
-unsafe impl<'a> FromValue<'a> for LayoutSerializeFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for LayoutSerializeFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -392,7 +391,7 @@ impl glib::value::ValueType for ShapeFlags {
 
 #[cfg(feature = "v1_44")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v1_44")))]
-unsafe impl<'a> FromValue<'a> for ShapeFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for ShapeFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -503,7 +502,7 @@ impl glib::value::ValueType for ShowFlags {
 
 #[cfg(feature = "v1_44")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v1_44")))]
-unsafe impl<'a> FromValue<'a> for ShowFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for ShowFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]

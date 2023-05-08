@@ -68,7 +68,7 @@ pub trait EmblemedIconExt: IsA<EmblemedIcon> + 'static {
     }
 
     fn gicon(&self) -> Option<Icon> {
-        glib::ObjectExt::property(self.as_ref(), "gicon")
+        ObjectExt::property(self.as_ref(), "gicon")
     }
 }
 

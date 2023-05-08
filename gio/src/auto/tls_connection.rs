@@ -293,12 +293,12 @@ pub trait TlsConnectionExt: IsA<TlsConnection> + 'static {
     #[cfg_attr(docsrs, doc(cfg(feature = "v2_60")))]
     #[doc(alias = "advertised-protocols")]
     fn advertised_protocols(&self) -> Vec<glib::GString> {
-        glib::ObjectExt::property(self.as_ref(), "advertised-protocols")
+        ObjectExt::property(self.as_ref(), "advertised-protocols")
     }
 
     #[doc(alias = "base-io-stream")]
     fn base_io_stream(&self) -> Option<IOStream> {
-        glib::ObjectExt::property(self.as_ref(), "base-io-stream")
+        ObjectExt::property(self.as_ref(), "base-io-stream")
     }
 
     #[doc(alias = "accept-certificate")]

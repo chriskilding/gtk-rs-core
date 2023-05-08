@@ -2,9 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use glib::{
-    error::ErrorDomain, translate::*, value::FromValue, value::ToValue, Quark, StaticType, Type,
-};
+use glib::{prelude::*, translate::*, Quark, Type};
 use std::fmt;
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
@@ -75,7 +73,7 @@ impl glib::value::ValueType for Colorspace {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for Colorspace {
+unsafe impl<'a> glib::value::FromValue<'a> for Colorspace {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -190,7 +188,7 @@ impl glib::value::ValueType for InterpType {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for InterpType {
+unsafe impl<'a> glib::value::FromValue<'a> for InterpType {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -303,7 +301,7 @@ impl glib::value::ValueType for PixbufAlphaMode {
 }
 
 #[allow(deprecated)]
-unsafe impl<'a> FromValue<'a> for PixbufAlphaMode {
+unsafe impl<'a> glib::value::FromValue<'a> for PixbufAlphaMode {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -456,7 +454,7 @@ impl glib::value::ValueType for PixbufError {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for PixbufError {
+unsafe impl<'a> glib::value::FromValue<'a> for PixbufError {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -571,7 +569,7 @@ impl glib::value::ValueType for PixbufRotation {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for PixbufRotation {
+unsafe impl<'a> glib::value::FromValue<'a> for PixbufRotation {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]

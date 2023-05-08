@@ -2,8 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use crate::{translate::*, value::FromValue, value::ToValue, StaticType, Type};
-use bitflags::bitflags;
+use crate::{bitflags::bitflags, prelude::*, translate::*, Type};
 use std::fmt;
 
 #[cfg(feature = "v2_66")]
@@ -201,7 +200,7 @@ impl crate::value::ValueType for IOCondition {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for IOCondition {
+unsafe impl<'a> crate::value::FromValue<'a> for IOCondition {
     type Checker = crate::value::GenericValueTypeChecker<Self>;
 
     #[inline]

@@ -64,7 +64,7 @@ pub trait FileMonitorExt: IsA<FileMonitor> + 'static {
 
     #[doc(alias = "rate-limit")]
     fn rate_limit(&self) -> i32 {
-        glib::ObjectExt::property(self.as_ref(), "rate-limit")
+        ObjectExt::property(self.as_ref(), "rate-limit")
     }
 
     #[doc(alias = "changed")]

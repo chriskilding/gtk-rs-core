@@ -2,9 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use glib::{
-    error::ErrorDomain, translate::*, value::FromValue, value::ToValue, Quark, StaticType, Type,
-};
+use glib::{prelude::*, translate::*, Quark, Type};
 use std::fmt;
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
@@ -90,7 +88,7 @@ impl glib::value::ValueType for BusType {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for BusType {
+unsafe impl<'a> glib::value::FromValue<'a> for BusType {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -205,7 +203,7 @@ impl glib::value::ValueType for ConverterResult {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for ConverterResult {
+unsafe impl<'a> glib::value::FromValue<'a> for ConverterResult {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -345,7 +343,7 @@ impl glib::value::ValueType for CredentialsType {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for CredentialsType {
+unsafe impl<'a> glib::value::FromValue<'a> for CredentialsType {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -450,7 +448,7 @@ impl glib::value::ValueType for DBusMessageByteOrder {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for DBusMessageByteOrder {
+unsafe impl<'a> glib::value::FromValue<'a> for DBusMessageByteOrder {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -595,7 +593,7 @@ impl glib::value::ValueType for DBusMessageHeaderField {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for DBusMessageHeaderField {
+unsafe impl<'a> glib::value::FromValue<'a> for DBusMessageHeaderField {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -715,7 +713,7 @@ impl glib::value::ValueType for DBusMessageType {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for DBusMessageType {
+unsafe impl<'a> glib::value::FromValue<'a> for DBusMessageType {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -825,7 +823,7 @@ impl glib::value::ValueType for DataStreamByteOrder {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for DataStreamByteOrder {
+unsafe impl<'a> glib::value::FromValue<'a> for DataStreamByteOrder {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -940,7 +938,7 @@ impl glib::value::ValueType for DataStreamNewlineType {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for DataStreamNewlineType {
+unsafe impl<'a> glib::value::FromValue<'a> for DataStreamNewlineType {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1060,7 +1058,7 @@ impl glib::value::ValueType for DriveStartStopType {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for DriveStartStopType {
+unsafe impl<'a> glib::value::FromValue<'a> for DriveStartStopType {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1175,7 +1173,7 @@ impl glib::value::ValueType for EmblemOrigin {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for EmblemOrigin {
+unsafe impl<'a> glib::value::FromValue<'a> for EmblemOrigin {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1285,7 +1283,7 @@ impl glib::value::ValueType for FileAttributeStatus {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for FileAttributeStatus {
+unsafe impl<'a> glib::value::FromValue<'a> for FileAttributeStatus {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1430,7 +1428,7 @@ impl glib::value::ValueType for FileAttributeType {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for FileAttributeType {
+unsafe impl<'a> glib::value::FromValue<'a> for FileAttributeType {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1580,7 +1578,7 @@ impl glib::value::ValueType for FileMonitorEvent {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for FileMonitorEvent {
+unsafe impl<'a> glib::value::FromValue<'a> for FileMonitorEvent {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1710,7 +1708,7 @@ impl glib::value::ValueType for FileType {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for FileType {
+unsafe impl<'a> glib::value::FromValue<'a> for FileType {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2069,7 +2067,7 @@ impl glib::value::ValueType for IOErrorEnum {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for IOErrorEnum {
+unsafe impl<'a> glib::value::FromValue<'a> for IOErrorEnum {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2195,7 +2193,7 @@ impl glib::value::ValueType for MemoryMonitorWarningLevel {
 
 #[cfg(feature = "v2_64")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_64")))]
-unsafe impl<'a> FromValue<'a> for MemoryMonitorWarningLevel {
+unsafe impl<'a> glib::value::FromValue<'a> for MemoryMonitorWarningLevel {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2309,7 +2307,7 @@ impl glib::value::ValueType for MountOperationResult {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for MountOperationResult {
+unsafe impl<'a> glib::value::FromValue<'a> for MountOperationResult {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2424,7 +2422,7 @@ impl glib::value::ValueType for NetworkConnectivity {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for NetworkConnectivity {
+unsafe impl<'a> glib::value::FromValue<'a> for NetworkConnectivity {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2539,7 +2537,7 @@ impl glib::value::ValueType for NotificationPriority {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for NotificationPriority {
+unsafe impl<'a> glib::value::FromValue<'a> for NotificationPriority {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2649,7 +2647,7 @@ impl glib::value::ValueType for PasswordSave {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for PasswordSave {
+unsafe impl<'a> glib::value::FromValue<'a> for PasswordSave {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2775,7 +2773,7 @@ impl glib::value::ValueType for PollableReturn {
 
 #[cfg(feature = "v2_60")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_60")))]
-unsafe impl<'a> FromValue<'a> for PollableReturn {
+unsafe impl<'a> glib::value::FromValue<'a> for PollableReturn {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2909,7 +2907,7 @@ impl glib::value::ValueType for ResolverError {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for ResolverError {
+unsafe impl<'a> glib::value::FromValue<'a> for ResolverError {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -3029,7 +3027,7 @@ impl glib::value::ValueType for ResolverRecordType {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for ResolverRecordType {
+unsafe impl<'a> glib::value::FromValue<'a> for ResolverRecordType {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -3154,7 +3152,7 @@ impl glib::value::ValueType for ResourceError {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for ResourceError {
+unsafe impl<'a> glib::value::FromValue<'a> for ResourceError {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -3294,7 +3292,7 @@ impl glib::value::ValueType for SocketClientEvent {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for SocketClientEvent {
+unsafe impl<'a> glib::value::FromValue<'a> for SocketClientEvent {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -3409,7 +3407,7 @@ impl glib::value::ValueType for SocketFamily {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for SocketFamily {
+unsafe impl<'a> glib::value::FromValue<'a> for SocketFamily {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -3524,7 +3522,7 @@ impl glib::value::ValueType for SocketListenerEvent {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for SocketListenerEvent {
+unsafe impl<'a> glib::value::FromValue<'a> for SocketListenerEvent {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -3644,7 +3642,7 @@ impl glib::value::ValueType for SocketProtocol {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for SocketProtocol {
+unsafe impl<'a> glib::value::FromValue<'a> for SocketProtocol {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -3759,7 +3757,7 @@ impl glib::value::ValueType for SocketType {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for SocketType {
+unsafe impl<'a> glib::value::FromValue<'a> for SocketType {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -3869,7 +3867,7 @@ impl glib::value::ValueType for TlsAuthenticationMode {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for TlsAuthenticationMode {
+unsafe impl<'a> glib::value::FromValue<'a> for TlsAuthenticationMode {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -3969,7 +3967,7 @@ impl glib::value::ValueType for TlsCertificateRequestFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for TlsCertificateRequestFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for TlsCertificateRequestFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -4100,7 +4098,7 @@ impl glib::value::ValueType for TlsChannelBindingType {
 
 #[cfg(feature = "v2_66")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_66")))]
-unsafe impl<'a> FromValue<'a> for TlsChannelBindingType {
+unsafe impl<'a> glib::value::FromValue<'a> for TlsChannelBindingType {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -4209,7 +4207,7 @@ impl glib::value::ValueType for TlsDatabaseLookupFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for TlsDatabaseLookupFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for TlsDatabaseLookupFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -4374,7 +4372,7 @@ impl glib::value::ValueType for TlsError {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for TlsError {
+unsafe impl<'a> glib::value::FromValue<'a> for TlsError {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -4484,7 +4482,7 @@ impl glib::value::ValueType for TlsInteractionResult {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for TlsInteractionResult {
+unsafe impl<'a> glib::value::FromValue<'a> for TlsInteractionResult {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -4635,7 +4633,7 @@ impl glib::value::ValueType for TlsProtocolVersion {
 
 #[cfg(feature = "v2_70")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_70")))]
-unsafe impl<'a> FromValue<'a> for TlsProtocolVersion {
+unsafe impl<'a> glib::value::FromValue<'a> for TlsProtocolVersion {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -4757,7 +4755,7 @@ impl glib::value::ValueType for TlsRehandshakeMode {
 }
 
 #[allow(deprecated)]
-unsafe impl<'a> FromValue<'a> for TlsRehandshakeMode {
+unsafe impl<'a> glib::value::FromValue<'a> for TlsRehandshakeMode {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -4888,7 +4886,7 @@ impl glib::value::ValueType for UnixSocketAddressType {
 }
 
 #[cfg(unix)]
-unsafe impl<'a> FromValue<'a> for UnixSocketAddressType {
+unsafe impl<'a> glib::value::FromValue<'a> for UnixSocketAddressType {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -5000,7 +4998,7 @@ impl glib::value::ValueType for ZlibCompressorFormat {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for ZlibCompressorFormat {
+unsafe impl<'a> glib::value::FromValue<'a> for ZlibCompressorFormat {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]

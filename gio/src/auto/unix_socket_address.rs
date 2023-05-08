@@ -67,7 +67,7 @@ pub trait UnixSocketAddressExt: IsA<UnixSocketAddress> + 'static {
 
     #[doc(alias = "path-as-array")]
     fn path_as_array(&self) -> Option<glib::ByteArray> {
-        glib::ObjectExt::property(self.as_ref(), "path-as-array")
+        ObjectExt::property(self.as_ref(), "path-as-array")
     }
 }
 

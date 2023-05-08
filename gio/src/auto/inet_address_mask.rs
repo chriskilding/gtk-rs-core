@@ -120,11 +120,11 @@ pub trait InetAddressMaskExt: IsA<InetAddressMask> + 'static {
     }
 
     fn set_address<P: IsA<InetAddress>>(&self, address: Option<&P>) {
-        glib::ObjectExt::set_property(self.as_ref(), "address", address)
+        ObjectExt::set_property(self.as_ref(), "address", address)
     }
 
     fn set_length(&self, length: u32) {
-        glib::ObjectExt::set_property(self.as_ref(), "length", length)
+        ObjectExt::set_property(self.as_ref(), "length", length)
     }
 
     #[doc(alias = "address")]

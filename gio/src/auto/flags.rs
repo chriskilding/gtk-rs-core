@@ -2,8 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-use bitflags::bitflags;
-use glib::{translate::*, value::FromValue, value::ToValue, StaticType, Type};
+use glib::{bitflags::bitflags, prelude::*, translate::*, Type};
 use std::fmt;
 
 bitflags! {
@@ -65,7 +64,7 @@ impl glib::value::ValueType for AppInfoCreateFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for AppInfoCreateFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for AppInfoCreateFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -168,7 +167,7 @@ impl glib::value::ValueType for ApplicationFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for ApplicationFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for ApplicationFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -263,7 +262,7 @@ impl glib::value::ValueType for AskPasswordFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for AskPasswordFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for AskPasswordFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -354,7 +353,7 @@ impl glib::value::ValueType for BusNameOwnerFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for BusNameOwnerFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for BusNameOwnerFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -441,7 +440,7 @@ impl glib::value::ValueType for BusNameWatcherFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for BusNameWatcherFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for BusNameWatcherFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -530,7 +529,7 @@ impl glib::value::ValueType for ConverterFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for ConverterFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for ConverterFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -619,7 +618,7 @@ impl glib::value::ValueType for DBusCallFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for DBusCallFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for DBusCallFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -706,7 +705,7 @@ impl glib::value::ValueType for DBusCapabilityFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for DBusCapabilityFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for DBusCapabilityFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -807,7 +806,7 @@ impl glib::value::ValueType for DBusConnectionFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for DBusConnectionFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for DBusConnectionFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -894,7 +893,7 @@ impl glib::value::ValueType for DBusInterfaceSkeletonFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for DBusInterfaceSkeletonFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for DBusInterfaceSkeletonFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -985,7 +984,7 @@ impl glib::value::ValueType for DBusMessageFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for DBusMessageFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for DBusMessageFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1084,7 +1083,7 @@ impl glib::value::ValueType for DBusProxyFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for DBusProxyFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for DBusProxyFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1171,7 +1170,7 @@ impl glib::value::ValueType for DBusSendMessageFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for DBusSendMessageFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for DBusSendMessageFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1262,7 +1261,7 @@ impl glib::value::ValueType for DBusServerFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for DBusServerFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for DBusServerFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1353,7 +1352,7 @@ impl glib::value::ValueType for DBusSignalFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for DBusSignalFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for DBusSignalFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1438,7 +1437,7 @@ impl glib::value::ValueType for DriveStartFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for DriveStartFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for DriveStartFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1527,7 +1526,7 @@ impl glib::value::ValueType for FileAttributeInfoFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for FileAttributeInfoFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for FileAttributeInfoFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1624,7 +1623,7 @@ impl glib::value::ValueType for FileCopyFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for FileCopyFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for FileCopyFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1713,7 +1712,7 @@ impl glib::value::ValueType for FileCreateFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for FileCreateFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for FileCreateFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1804,7 +1803,7 @@ impl glib::value::ValueType for FileMeasureFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for FileMeasureFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for FileMeasureFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1897,7 +1896,7 @@ impl glib::value::ValueType for FileMonitorFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for FileMonitorFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for FileMonitorFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1984,7 +1983,7 @@ impl glib::value::ValueType for FileQueryInfoFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for FileQueryInfoFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for FileQueryInfoFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2075,7 +2074,7 @@ impl glib::value::ValueType for IOStreamSpliceFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for IOStreamSpliceFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for IOStreamSpliceFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2160,7 +2159,7 @@ impl glib::value::ValueType for MountMountFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for MountMountFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for MountMountFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2247,7 +2246,7 @@ impl glib::value::ValueType for MountUnmountFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for MountUnmountFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for MountUnmountFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2336,7 +2335,7 @@ impl glib::value::ValueType for OutputStreamSpliceFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for OutputStreamSpliceFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for OutputStreamSpliceFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2441,7 +2440,7 @@ impl glib::value::ValueType for ResolverNameLookupFlags {
 
 #[cfg(feature = "v2_60")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_60")))]
-unsafe impl<'a> FromValue<'a> for ResolverNameLookupFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for ResolverNameLookupFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2530,7 +2529,7 @@ impl glib::value::ValueType for ResourceLookupFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for ResourceLookupFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for ResourceLookupFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2625,7 +2624,7 @@ impl glib::value::ValueType for SettingsBindFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for SettingsBindFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for SettingsBindFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2730,7 +2729,7 @@ impl glib::value::ValueType for SubprocessFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for SubprocessFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for SubprocessFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2829,7 +2828,7 @@ impl glib::value::ValueType for TlsCertificateFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for TlsCertificateFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for TlsCertificateFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2914,7 +2913,7 @@ impl glib::value::ValueType for TlsDatabaseVerifyFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for TlsDatabaseVerifyFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for TlsDatabaseVerifyFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -3011,7 +3010,7 @@ impl glib::value::ValueType for TlsPasswordFlags {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for TlsPasswordFlags {
+unsafe impl<'a> glib::value::FromValue<'a> for TlsPasswordFlags {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
