@@ -71,7 +71,7 @@ fn gen_impl_to_value_optional(name: &Ident, crate_ident: &TokenStream) -> TokenS
     let option_to_ptr = gen_option_to_ptr();
 
     quote! {
-        impl #crate_ident::value::ToValueOptional for #name {
+        impl #crate_ident::prelude::ToValueOptional for #name {
             #[inline]
             fn to_value_optional(s: ::core::option::Option<&Self>) -> #crate_ident::Value {
                 let mut value = #crate_ident::Value::for_value_type::<Self>();
@@ -148,7 +148,7 @@ pub fn impl_boxed(input: &syn::DeriveInput) -> TokenStream {
             type Type = #name;
         }
 
-        impl #crate_ident::value::ToValue for #name {
+        impl #crate_ident::prelude::ToValue for #name {
             #[inline]
             fn to_value(&self) -> #crate_ident::Value {
                 unsafe {
@@ -244,7 +244,7 @@ pub fn impl_boxed(input: &syn::DeriveInput) -> TokenStream {
             }
         }
 
-        impl #crate_ident::HasParamSpec for #name {
+        impl #crate_ident::prelude::HasParamSpec for #name {
             type ParamSpec = #crate_ident::ParamSpecBoxed;
             type SetValue = Self;
             type BuilderFn = fn(&::core::primitive::str) -> #crate_ident::ParamSpecBoxedBuilder<Self>;

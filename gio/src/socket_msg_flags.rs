@@ -2,7 +2,7 @@
 
 use std::fmt;
 
-use glib::{prelude::*, translate::*, value::FromValue, Type};
+use glib::{bitflags, prelude::*, translate::*, value::FromValue, Type};
 
 bitflags::bitflags! {
     #[doc(alias = "GSocketMsgFlags")]

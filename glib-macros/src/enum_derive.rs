@@ -133,7 +133,7 @@ pub fn impl_enum(input: &syn::DeriveInput) -> TokenStream {
             }
         }
 
-        impl #crate_ident::value::ToValue for #name {
+        impl #crate_ident::prelude::ToValue for #name {
             #[inline]
             fn to_value(&self) -> #crate_ident::value::Value {
                 let mut value = #crate_ident::value::Value::for_value_type::<Self>();
@@ -190,7 +190,7 @@ pub fn impl_enum(input: &syn::DeriveInput) -> TokenStream {
             }
         }
 
-        impl #crate_ident::HasParamSpec for #name {
+        impl #crate_ident::prelude::HasParamSpec for #name {
             type ParamSpec = #crate_ident::ParamSpecEnum;
             type SetValue = Self;
             type BuilderFn = fn(&::core::primitive::str, Self) -> #crate_ident::ParamSpecEnumBuilder<Self>;

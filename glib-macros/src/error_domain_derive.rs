@@ -28,7 +28,7 @@ pub fn impl_error_domain(input: &syn::DeriveInput) -> TokenStream {
     let from_glib = gen_enum_from_glib(name, enum_variants);
 
     quote! {
-        impl #crate_ident::error::ErrorDomain for #name {
+        impl #crate_ident::prelude::ErrorDomain for #name {
             #[inline]
             fn domain() -> #crate_ident::Quark {
                 use #crate_ident::translate::from_glib;

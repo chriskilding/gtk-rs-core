@@ -2,7 +2,7 @@
 
 use std::ptr;
 
-use glib::{prelude::*, subclass::prelude::*, translate::*, Cast, Error};
+use glib::{prelude::*, subclass::prelude::*, translate::*, Error};
 use once_cell::sync::Lazy;
 
 use crate::{Cancellable, IOStream, InputStream, OutputStream};

@@ -324,12 +324,12 @@ macro_rules! glib_boxed_wrapper {
         }
 
         #[doc(hidden)]
-        impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? $crate::value::ValueType for $name $(<$($generic),+>)? {
+        impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? $crate::prelude::ValueType for $name $(<$($generic),+>)? {
             type Type = Self;
         }
 
         #[doc(hidden)]
-        impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? $crate::value::ValueTypeOptional for $name $(<$($generic),+>)? { }
+        impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? $crate::prelude::ValueTypeOptional for $name $(<$($generic),+>)? { }
 
         #[doc(hidden)]
         unsafe impl<'a $(, $($generic $(: $bound $(+ $bound2)*)?),+)?> $crate::value::FromValue<'a> for $name $(<$($generic),+>)? {
@@ -357,11 +357,11 @@ macro_rules! glib_boxed_wrapper {
         }
 
         #[doc(hidden)]
-        impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? $crate::value::ToValue for $name $(<$($generic),+>)? {
+        impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? $crate::prelude::ToValue for $name $(<$($generic),+>)? {
             #[inline]
             fn to_value(&self) -> $crate::Value {
                 unsafe {
-                    let mut value = $crate::Value::from_type_unchecked(<Self as $crate::StaticType>::static_type());
+                    let mut value = $crate::Value::from_type_unchecked(<Self as $crate::prelude::StaticType>::static_type());
                     $crate::gobject_ffi::g_value_take_boxed(
                         $crate::translate::ToGlibPtrMut::to_glib_none_mut(&mut value).0,
                         $crate::translate::ToGlibPtr::<*const $ffi_name>::to_glib_full(self) as *mut _,
@@ -372,7 +372,7 @@ macro_rules! glib_boxed_wrapper {
 
             #[inline]
             fn value_type(&self) -> $crate::Type {
-                <Self as $crate::StaticType>::static_type()
+                <Self as $crate::prelude::StaticType>::static_type()
             }
         }
 
@@ -380,7 +380,7 @@ macro_rules! glib_boxed_wrapper {
             #[inline]
             fn from(o: $name $(<$($generic),+>)?) -> Self {
                 unsafe {
-                    let mut value = $crate::Value::from_type_unchecked(<$name $(<$($generic),+>)? as $crate::StaticType>::static_type());
+                    let mut value = $crate::Value::from_type_unchecked(<$name $(<$($generic),+>)? as $crate::prelude::StaticType>::static_type());
                     $crate::gobject_ffi::g_value_take_boxed(
                         $crate::translate::ToGlibPtrMut::to_glib_none_mut(&mut value).0,
                         $crate::translate::IntoGlibPtr::<*mut $ffi_name>::into_glib_ptr(o) as *mut _,
@@ -391,7 +391,7 @@ macro_rules! glib_boxed_wrapper {
         }
 
         #[doc(hidden)]
-        impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? $crate::value::ToValueOptional for $name $(<$($generic),+>)? {
+        impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? $crate::prelude::ToValueOptional for $name $(<$($generic),+>)? {
             #[inline]
             fn to_value_optional(s: Option<&Self>) -> $crate::Value {
                 let mut value = $crate::Value::for_value_type::<Self>();

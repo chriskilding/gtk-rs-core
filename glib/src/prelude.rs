@@ -4,6 +4,16 @@
 //! Traits and essential types intended for blanket imports.
 
 pub use crate::{
-    param_spec::ParamSpecBuilderExt, Cast, CastNone, Continue, IsA, ObjectExt, ObjectType,
-    ParamSpecType, StaticType, StaticTypeExt, StaticVariantType, ToSendValue, ToValue, ToVariant,
+    closure::{IntoClosureReturnValue, TryFromClosureReturnValue},
+    collections::{ptr_slice::IntoPtrSlice, strv::IntoStrV},
+    error::ErrorDomain,
+    gstring::{IntoGStr, IntoOptionalGStr},
+    object::{Cast, CastNone, IsA, ObjectExt, ObjectType},
+    param_spec::{HasParamSpec, ParamSpecBuilderExt, ParamSpecType},
+    types::{StaticType, StaticTypeExt},
+    value::{
+        ToSendValue, ToValue, ToValueOptional, ValueType, ValueTypeChecker, ValueTypeOptional,
+    },
+    variant::{FixedSizeVariantType, FromVariant, StaticVariantType, ToVariant},
+    Continue,
 };

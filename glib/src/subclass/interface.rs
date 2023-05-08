@@ -19,7 +19,7 @@ impl PrerequisiteList for () {
     }
 }
 
-impl<T: crate::ObjectType> PrerequisiteList for (T,) {
+impl<T: crate::prelude::ObjectType> PrerequisiteList for (T,) {
     fn types() -> Vec<ffi::GType> {
         vec![T::static_type().into_glib()]
     }
@@ -46,7 +46,7 @@ macro_rules! prerequisite_list_trait(
 // and then implements the trait on (A, B, C).
 macro_rules! prerequisite_list_trait_impl(
     ($($name:ident),+) => (
-        impl<$($name: crate::ObjectType),+> PrerequisiteList for ( $($name),+ ) {
+        impl<$($name: crate::prelude::ObjectType),+> PrerequisiteList for ( $($name),+ ) {
             fn types() -> Vec<ffi::GType> {
                 vec![$($name::static_type().into_glib()),+]
             }

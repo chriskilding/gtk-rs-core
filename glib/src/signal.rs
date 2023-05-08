@@ -9,7 +9,7 @@ use ffi::{gboolean, gpointer};
 use gobject_ffi::{self, GCallback};
 use libc::{c_char, c_ulong, c_void};
 
-use crate::{prelude::*, translate::*};
+use crate::{prelude::*, translate::*, Type, Value};
 
 // rustdoc-stripper-ignore-next
 /// The id of a signal that is returned by `connect`.
@@ -82,17 +82,17 @@ impl IntoGlib for Inhibit {
     }
 }
 
-impl crate::ToValue for Inhibit {
-    fn to_value(&self) -> crate::Value {
+impl ToValue for Inhibit {
+    fn to_value(&self) -> Value {
         self.0.to_value()
     }
 
-    fn value_type(&self) -> crate::Type {
-        <bool as crate::StaticType>::static_type()
+    fn value_type(&self) -> Type {
+        <bool as StaticType>::static_type()
     }
 }
 
-impl From<Inhibit> for crate::Value {
+impl From<Inhibit> for Value {
     #[inline]
     fn from(v: Inhibit) -> Self {
         v.0.into()

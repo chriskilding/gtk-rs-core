@@ -1,4 +1,4 @@
-use glib::{value::FromValue, StaticType, ToValue, Value, ValueDelegate};
+use glib::{value::FromValue, Value, ValueDelegate};
 
 #[test]
 fn into_value() {

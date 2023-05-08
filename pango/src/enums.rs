@@ -4,7 +4,7 @@
 use std::fmt;
 
 #[cfg(feature = "v1_50")]
-use glib::{error::ErrorDomain, prelude::*, translate::*, value::FromValue, Quark};
+use glib::{prelude::*, translate::*, Quark};
 
 #[cfg(feature = "v1_50")]
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
@@ -110,7 +110,7 @@ impl glib::value::ValueType for LayoutDeserializeError {
 
 #[cfg(feature = "v1_50")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v1_50")))]
-unsafe impl<'a> FromValue<'a> for LayoutDeserializeError {
+unsafe impl<'a> glib::value::FromValue<'a> for LayoutDeserializeError {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     unsafe fn from_value(value: &'a glib::Value) -> Self {

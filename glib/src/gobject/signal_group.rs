@@ -3,9 +3,10 @@
 use std::mem::transmute;
 
 use crate::{
+    prelude::*,
     signal::{connect_raw, SignalHandlerId},
     translate::*,
-    IsA, Object, ObjectType, RustClosure, SignalGroup, Value,
+    Object, RustClosure, SignalGroup, Value,
 };
 
 impl SignalGroup {

@@ -11,14 +11,14 @@ use crate::Error;
 #[cfg(feature = "use_glib")]
 macro_rules! gvalue_impl {
     ($name:ty, $get_type:expr) => {
-        impl glib::types::StaticType for $name {
+        impl glib::prelude::StaticType for $name {
             #[inline]
             fn static_type() -> glib::Type {
                 unsafe { from_glib($get_type()) }
             }
         }
 
-        impl glib::value::ValueType for $name {
+        impl glib::prelude::ValueType for $name {
             type Type = Self;
         }
 
@@ -30,7 +30,7 @@ macro_rules! gvalue_impl {
             }
         }
 
-        impl glib::value::ToValue for $name {
+        impl glib::prelude::ToValue for $name {
             fn to_value(&self) -> glib::Value {
                 let mut value = glib::Value::for_value_type::<Self>();
                 unsafe {
@@ -40,14 +40,14 @@ macro_rules! gvalue_impl {
             }
 
             fn value_type(&self) -> glib::Type {
-                <Self as glib::StaticType>::static_type()
+                <Self as glib::prelude::StaticType>::static_type()
             }
         }
 
         impl From<$name> for glib::Value {
             #[inline]
             fn from(v: $name) -> Self {
-                glib::value::ToValue::to_value(&v)
+                glib::prelude::ToValue::to_value(&v)
             }
         }
     };

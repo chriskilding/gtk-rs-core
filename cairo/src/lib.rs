@@ -20,7 +20,7 @@ macro_rules! gvalue_impl_inner {
         #[allow(unused_imports)]
         use glib::translate::*;
 
-        impl glib::types::StaticType for $name {
+        impl glib::prelude::StaticType for $name {
             #[inline]
             fn static_type() -> glib::types::Type {
                 unsafe { from_glib($get_type()) }
@@ -71,11 +71,11 @@ macro_rules! gvalue_impl {
             }
         }
 
-        impl glib::value::ToValue for $name {
+        impl glib::prelude::ToValue for $name {
             fn to_value(&self) -> glib::Value {
                 unsafe {
                     let mut value = glib::Value::from_type_unchecked(
-                        <$name as glib::StaticType>::static_type(),
+                        <$name as glib::prelude::StaticType>::static_type(),
                     );
                     glib::gobject_ffi::g_value_take_boxed(
                         value.to_glib_none_mut().0,
@@ -86,7 +86,7 @@ macro_rules! gvalue_impl {
             }
 
             fn value_type(&self) -> glib::Type {
-                <$name as glib::StaticType>::static_type()
+                <$name as glib::prelude::StaticType>::static_type()
             }
         }
 
@@ -94,7 +94,7 @@ macro_rules! gvalue_impl {
             fn from(v: $name) -> Self {
                 unsafe {
                     let mut value = glib::Value::from_type_unchecked(
-                        <$name as glib::StaticType>::static_type(),
+                        <$name as glib::prelude::StaticType>::static_type(),
                     );
                     glib::gobject_ffi::g_value_take_boxed(
                         value.to_glib_none_mut().0,
@@ -105,7 +105,7 @@ macro_rules! gvalue_impl {
             }
         }
 
-        impl glib::value::ToValueOptional for $name {
+        impl glib::prelude::ToValueOptional for $name {
             fn to_value_optional(s: Option<&Self>) -> glib::Value {
                 let mut value = glib::Value::for_value_type::<Self>();
                 unsafe {
@@ -153,14 +153,14 @@ macro_rules! gvalue_impl_inline {
             }
         }
 
-        impl glib::value::ToValue for $name {
+        impl glib::prelude::ToValue for $name {
             fn to_value(&self) -> glib::Value {
                 unsafe {
                     let ptr =
                         glib::ffi::g_malloc0(std::mem::size_of::<$ffi_name>()) as *mut $ffi_name;
                     ptr.write(self.0);
                     let mut value = glib::Value::from_type_unchecked(
-                        <$name as glib::StaticType>::static_type(),
+                        <$name as glib::prelude::StaticType>::static_type(),
                     );
                     glib::gobject_ffi::g_value_take_boxed(
                         value.to_glib_none_mut().0,
@@ -171,11 +171,11 @@ macro_rules! gvalue_impl_inline {
             }
 
             fn value_type(&self) -> glib::Type {
-                <$name as glib::StaticType>::static_type()
+                <$name as glib::prelude::StaticType>::static_type()
             }
         }
 
-        impl glib::value::ToValueOptional for $name {
+        impl glib::prelude::ToValueOptional for $name {
             fn to_value_optional(s: Option<&Self>) -> glib::Value {
                 let ptr: *mut $ffi_name = match s {
                     Some(s) => unsafe {

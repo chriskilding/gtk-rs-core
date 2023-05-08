@@ -5,10 +5,8 @@ use std::{cmp::Ordering, ops, slice};
 use crate::{
     prelude::*,
     translate::*,
-    value::{
-        FromValue, GenericValueTypeOrNoneChecker, ToValueOptional, ValueType, ValueTypeOptional,
-    },
-    HasParamSpec, ParamSpecValueArray, ParamSpecValueArrayBuilder, Type, Value,
+    value::{FromValue, GenericValueTypeOrNoneChecker},
+    ParamSpecValueArray, ParamSpecValueArrayBuilder, Type, Value,
 };
 
 wrapper! {

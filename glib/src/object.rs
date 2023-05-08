@@ -6,14 +6,13 @@
 use std::{cmp, fmt, hash, marker::PhantomData, mem, mem::ManuallyDrop, ops, pin::Pin, ptr};
 
 use crate::{
-    closure::TryFromClosureReturnValue,
     prelude::*,
     quark::Quark,
-    subclass::{prelude::*, signal::SignalQuery, SignalId},
+    subclass::{prelude::*, SignalId, SignalQuery},
     thread_guard::thread_id,
     translate::*,
     value::FromValue,
-    Closure, IntoGStr, PtrSlice, RustClosure, SignalHandlerId, Type, Value,
+    Closure, PtrSlice, RustClosure, SignalHandlerId, Type, Value,
 };
 
 // rustdoc-stripper-ignore-next
@@ -1026,7 +1025,7 @@ macro_rules! glib_object_wrapper {
             }
         }
 
-        impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? $crate::types::StaticType for $name $(<$($generic),+>)? {
+        impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? $crate::prelude::StaticType for $name $(<$($generic),+>)? {
             #[inline]
             fn static_type() -> $crate::types::Type {
                 #[allow(unused_unsafe)]
@@ -1035,12 +1034,12 @@ macro_rules! glib_object_wrapper {
         }
 
         #[doc(hidden)]
-        impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? $crate::value::ValueType for $name $(<$($generic),+>)? {
+        impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? $crate::prelude::ValueType for $name $(<$($generic),+>)? {
             type Type = $name $(<$($generic),+>)?;
         }
 
         #[doc(hidden)]
-        impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? $crate::value::ValueTypeOptional for $name $(<$($generic),+>)? { }
+        impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? $crate::prelude::ValueTypeOptional for $name $(<$($generic),+>)? { }
 
         #[doc(hidden)]
         unsafe impl<'a $(, $($generic $(: $bound $(+ $bound2)*)?),+)?> $crate::value::FromValue<'a> for $name $(<$($generic),+>)? {
@@ -1070,11 +1069,11 @@ macro_rules! glib_object_wrapper {
         }
 
         #[doc(hidden)]
-        impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? $crate::value::ToValue for $name $(<$($generic),+>)? {
+        impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? $crate::prelude::ToValue for $name $(<$($generic),+>)? {
             #[inline]
             fn to_value(&self) -> $crate::Value {
                 unsafe {
-                    let mut value = $crate::Value::from_type_unchecked(<Self as $crate::StaticType>::static_type());
+                    let mut value = $crate::Value::from_type_unchecked(<Self as $crate::prelude::StaticType>::static_type());
                     $crate::gobject_ffi::g_value_take_object(
                         $crate::translate::ToGlibPtrMut::to_glib_none_mut(&mut value).0,
                         $crate::translate::ToGlibPtr::<*mut $ffi_name>::to_glib_full(self) as *mut _,
@@ -1085,7 +1084,7 @@ macro_rules! glib_object_wrapper {
 
             #[inline]
             fn value_type(&self) -> $crate::Type {
-                <Self as $crate::StaticType>::static_type()
+                <Self as $crate::prelude::StaticType>::static_type()
             }
         }
 
@@ -1094,7 +1093,7 @@ macro_rules! glib_object_wrapper {
             #[inline]
             fn from(o: $name $(<$($generic),+>)?) -> Self {
                 unsafe {
-                    let mut value = $crate::Value::from_type_unchecked(<$name $(<$($generic),+>)? as $crate::StaticType>::static_type());
+                    let mut value = $crate::Value::from_type_unchecked(<$name $(<$($generic),+>)? as $crate::prelude::StaticType>::static_type());
                     $crate::gobject_ffi::g_value_take_object(
                         $crate::translate::ToGlibPtrMut::to_glib_none_mut(&mut value).0,
                         $crate::translate::IntoGlibPtr::<*mut $ffi_name>::into_glib_ptr(o) as *mut _,
@@ -1105,7 +1104,7 @@ macro_rules! glib_object_wrapper {
         }
 
         #[doc(hidden)]
-        impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? $crate::value::ToValueOptional for $name $(<$($generic),+>)? {
+        impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? $crate::prelude::ToValueOptional for $name $(<$($generic),+>)? {
             #[inline]
             fn to_value_optional(s: Option<&Self>) -> $crate::Value {
                 let mut value = $crate::Value::for_value_type::<Self>();
@@ -1154,7 +1153,7 @@ macro_rules! glib_object_wrapper {
         impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? From<$name $(<$($generic),+>)?> for $super_name {
             #[inline]
             fn from(v: $name $(<$($generic),+>)?) -> Self {
-                <$name $(::<$($generic),+>)? as $crate::Cast>::upcast(v)
+                <$name $(::<$($generic),+>)? as $crate::prelude::Cast>::upcast(v)
             }
         }
 
@@ -1255,7 +1254,7 @@ macro_rules! glib_object_wrapper {
         impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? From<$name $(<$($generic),+>)?> for $crate::object::Object {
             #[inline]
             fn from(v: $name $(<$($generic),+>)?) -> Self {
-                <$name $(::<$($generic),+>)? as $crate::Cast>::upcast(v)
+                <$name $(::<$($generic),+>)? as $crate::prelude::Cast>::upcast(v)
             }
         }
 
@@ -1336,7 +1335,7 @@ macro_rules! glib_object_wrapper {
         impl $(<$($generic $(: $bound $(+ $bound2)*)?),+>)? From<$name $(<$($generic),+>)?> for $crate::object::Object {
             #[inline]
             fn from(v: $name $(<$($generic),+>)?) -> Self {
-                <$name $(::<$($generic),+>)? as $crate::Cast>::upcast(v)
+                <$name $(::<$($generic),+>)? as $crate::prelude::Cast>::upcast(v)
             }
         }
 
