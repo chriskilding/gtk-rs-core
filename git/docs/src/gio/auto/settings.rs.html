@@ -3367,13 +3367,13 @@
     /// [`true`] to stop other handlers from being invoked for the
     ///  event. FALSE to propagate the event further.
     </span><span class="attr">#[doc(alias = <span class="string">&quot;writable-change-event&quot;</span>)]
-    </span><span class="kw">fn </span>connect_writable_change_event&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a href="../../../glib/control_flow/enum.ControlFlow.html">glib::ControlFlow</a> + <span class="lifetime">&#39;static</span>&gt;(
+    </span><span class="kw">fn </span>connect_writable_change_event&lt;F: Fn(<span class="kw-2">&amp;</span><span class="self">Self</span>, <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a href="../../../glib/signal/enum.Propagation.html">glib::Propagation</a> + <span class="lifetime">&#39;static</span>&gt;(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         f: F,
     ) -&gt; <a href="../../../glib/signal/struct.SignalHandlerId.html">SignalHandlerId</a> {
         <span class="kw">unsafe extern </span><span class="string">&quot;C&quot; </span><span class="kw">fn </span>writable_change_event_trampoline&lt;
             P: IsA&lt;<a href="#13-454">Settings</a>&gt;,
-            F: Fn(<span class="kw-2">&amp;</span>P, <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a href="../../../glib/control_flow/enum.ControlFlow.html">glib::ControlFlow</a> + <span class="lifetime">&#39;static</span>,
+            F: Fn(<span class="kw-2">&amp;</span>P, <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a href="../../../glib/signal/enum.Propagation.html">glib::Propagation</a> + <span class="lifetime">&#39;static</span>,
         &gt;(
             this: <span class="kw-2">*mut </span>ffi::GSettings,
             key: libc::c_uint,
