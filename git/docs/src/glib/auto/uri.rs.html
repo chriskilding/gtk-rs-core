@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/auto/uri.rs`."><title>uri.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-cb6f1f67f1bcd037.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.73.0-nightly (1d56e3a6d 2023-07-22)" data-channel="nightly" data-search-js="search-6dfdfced5eff6596.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-6d2c9675f3d09c26.css" data-theme-dark-css="dark-45ceb8f2e522f4d1.css" data-theme-ayu-css="ayu-fd19013d6ce078bf.css" ><script src="../../../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="../../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-6d2c9675f3d09c26.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-45ceb8f2e522f4d1.css"><link rel="stylesheet" href="../../../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/auto/uri.rs`."><title>uri.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-cb6f1f67f1bcd037.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.73.0-nightly (db7ff98a7 2023-07-31)" data-channel="nightly" data-search-js="search-6dfdfced5eff6596.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-6d2c9675f3d09c26.css" data-theme-dark-css="dark-45ceb8f2e522f4d1.css" data-theme-ayu-css="ayu-fd19013d6ce078bf.css" ><script src="../../../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="../../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-6d2c9675f3d09c26.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-45ceb8f2e522f4d1.css"><link rel="stylesheet" href="../../../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -606,77 +606,11 @@
 <a href="#533" id="533">533</a>
 <a href="#534" id="534">534</a>
 <a href="#535" id="535">535</a>
-<a href="#536" id="536">536</a>
-<a href="#537" id="537">537</a>
-<a href="#538" id="538">538</a>
-<a href="#539" id="539">539</a>
-<a href="#540" id="540">540</a>
-<a href="#541" id="541">541</a>
-<a href="#542" id="542">542</a>
-<a href="#543" id="543">543</a>
-<a href="#544" id="544">544</a>
-<a href="#545" id="545">545</a>
-<a href="#546" id="546">546</a>
-<a href="#547" id="547">547</a>
-<a href="#548" id="548">548</a>
-<a href="#549" id="549">549</a>
-<a href="#550" id="550">550</a>
-<a href="#551" id="551">551</a>
-<a href="#552" id="552">552</a>
-<a href="#553" id="553">553</a>
-<a href="#554" id="554">554</a>
-<a href="#555" id="555">555</a>
-<a href="#556" id="556">556</a>
-<a href="#557" id="557">557</a>
-<a href="#558" id="558">558</a>
-<a href="#559" id="559">559</a>
-<a href="#560" id="560">560</a>
-<a href="#561" id="561">561</a>
-<a href="#562" id="562">562</a>
-<a href="#563" id="563">563</a>
-<a href="#564" id="564">564</a>
-<a href="#565" id="565">565</a>
-<a href="#566" id="566">566</a>
-<a href="#567" id="567">567</a>
-<a href="#568" id="568">568</a>
-<a href="#569" id="569">569</a>
-<a href="#570" id="570">570</a>
-<a href="#571" id="571">571</a>
-<a href="#572" id="572">572</a>
-<a href="#573" id="573">573</a>
-<a href="#574" id="574">574</a>
-<a href="#575" id="575">575</a>
-<a href="#576" id="576">576</a>
-<a href="#577" id="577">577</a>
-<a href="#578" id="578">578</a>
-<a href="#579" id="579">579</a>
-<a href="#580" id="580">580</a>
-<a href="#581" id="581">581</a>
-<a href="#582" id="582">582</a>
-<a href="#583" id="583">583</a>
-<a href="#584" id="584">584</a>
-<a href="#585" id="585">585</a>
-<a href="#586" id="586">586</a>
-<a href="#587" id="587">587</a>
-<a href="#588" id="588">588</a>
-<a href="#589" id="589">589</a>
-<a href="#590" id="590">590</a>
-<a href="#591" id="591">591</a>
-<a href="#592" id="592">592</a>
-<a href="#593" id="593">593</a>
-<a href="#594" id="594">594</a>
-<a href="#595" id="595">595</a>
-<a href="#596" id="596">596</a>
-<a href="#597" id="597">597</a>
-<a href="#598" id="598">598</a>
-<a href="#599" id="599">599</a>
-<a href="#600" id="600">600</a>
-<a href="#601" id="601">601</a>
 </pre></div><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-</span><span class="kw">use crate</span>::{<a href="../lib.rs.html#142">translate</a>::<span class="kw-2">*</span>, <a href="../bytes.rs.html#14-40">Bytes</a>, <a href="../error.rs.html#10-22">Error</a>, <a href="flags.rs.html#481-542">UriFlags</a>, <a href="flags.rs.html#575-603">UriHideFlags</a>};
+</span><span class="kw">use crate</span>::{<a href="../lib.rs.html#142">translate</a>::<span class="kw-2">*</span>, <a href="../bytes.rs.html#14-40">Bytes</a>, <a href="../error.rs.html#10-22">Error</a>, <a href="flags.rs.html#481-507">UriFlags</a>, <a href="flags.rs.html#540-558">UriHideFlags</a>};
 <span class="kw">use </span>std::{<a href="https://doc.rust-lang.org/nightly/alloc/fmt/index.html">fmt</a>, <a href="https://doc.rust-lang.org/nightly/core/mem/index.html">mem</a>, <a href="https://doc.rust-lang.org/nightly/core/ptr/index.html">ptr</a>};
 
 <a class="macro" href="../wrapper.rs.html#277-445">crate::wrapper! </a>{
@@ -699,7 +633,7 @@
 
     <span class="attr">#[doc(alias = <span class="string">&quot;g_uri_get_flags&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_flags&quot;</span>)]
-    </span><span class="kw">pub fn </span>flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="flags.rs.html#481-542">UriFlags</a> {
+    </span><span class="kw">pub fn </span>flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="flags.rs.html#481-507">UriFlags</a> {
         <span class="kw">unsafe </span>{ <a href="../translate.rs.html#1413-1415">from_glib</a>(ffi::g_uri_get_flags(<a class="self" href="#28">self</a>.<a href="../translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>)) }
     }
 
@@ -758,7 +692,7 @@
     }
 
     <span class="attr">#[doc(alias = <span class="string">&quot;g_uri_parse_relative&quot;</span>)]
-    </span><span class="kw">pub fn </span>parse_relative(<span class="kw-2">&amp;</span><span class="self">self</span>, uri_ref: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, flags: <a href="flags.rs.html#481-542">UriFlags</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<a href="#8-17">Uri</a>, <a href="../error.rs.html#10-22"><span class="kw">crate</span>::Error</a>&gt; {
+    </span><span class="kw">pub fn </span>parse_relative(<span class="kw-2">&amp;</span><span class="self">self</span>, uri_ref: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, flags: <a href="flags.rs.html#481-507">UriFlags</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<a href="#8-17">Uri</a>, <a href="../error.rs.html#10-22"><span class="kw">crate</span>::Error</a>&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
             <span class="kw">let </span>ret = ffi::g_uri_parse_relative(
@@ -782,7 +716,7 @@
     }
 
     <span class="attr">#[doc(alias = <span class="string">&quot;g_uri_to_string_partial&quot;</span>)]
-    </span><span class="kw">pub fn </span>to_string_partial(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: <a href="flags.rs.html#575-603">UriHideFlags</a>) -&gt; <a href="../gstring.rs.html#979"><span class="kw">crate</span>::GString</a> {
+    </span><span class="kw">pub fn </span>to_string_partial(<span class="kw-2">&amp;</span><span class="self">self</span>, flags: <a href="flags.rs.html#540-558">UriHideFlags</a>) -&gt; <a href="../gstring.rs.html#979"><span class="kw">crate</span>::GString</a> {
         <span class="kw">unsafe </span>{
             <a href="../translate.rs.html#1630-1632">from_glib_full</a>(ffi::g_uri_to_string_partial(
                 <a class="self" href="#111">self</a>.<a href="../translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
@@ -793,7 +727,7 @@
 
     <span class="attr">#[doc(alias = <span class="string">&quot;g_uri_build&quot;</span>)]
     </span><span class="kw">pub fn </span>build(
-        flags: <a href="flags.rs.html#481-542">UriFlags</a>,
+        flags: <a href="flags.rs.html#481-507">UriFlags</a>,
         scheme: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
         userinfo: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
         host: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
@@ -818,7 +752,7 @@
 
     <span class="attr">#[doc(alias = <span class="string">&quot;g_uri_build_with_user&quot;</span>)]
     </span><span class="kw">pub fn </span>build_with_user(
-        flags: <a href="flags.rs.html#481-542">UriFlags</a>,
+        flags: <a href="flags.rs.html#481-507">UriFlags</a>,
         scheme: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
         user: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
         password: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
@@ -873,7 +807,7 @@
     }
 
     <span class="attr">#[doc(alias = <span class="string">&quot;g_uri_is_valid&quot;</span>)]
-    </span><span class="kw">pub fn </span>is_valid(uri_string: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, flags: <a href="flags.rs.html#481-542">UriFlags</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), <a href="../error.rs.html#10-22"><span class="kw">crate</span>::Error</a>&gt; {
+    </span><span class="kw">pub fn </span>is_valid(uri_string: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, flags: <a href="flags.rs.html#481-507">UriFlags</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(), <a href="../error.rs.html#10-22"><span class="kw">crate</span>::Error</a>&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
             <span class="kw">let </span>is_ok =
@@ -889,7 +823,7 @@
 
     <span class="attr">#[doc(alias = <span class="string">&quot;g_uri_join&quot;</span>)]
     </span><span class="kw">pub fn </span>join(
-        flags: <a href="flags.rs.html#481-542">UriFlags</a>,
+        flags: <a href="flags.rs.html#481-507">UriFlags</a>,
         scheme: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
         userinfo: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
         host: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
@@ -914,7 +848,7 @@
 
     <span class="attr">#[doc(alias = <span class="string">&quot;g_uri_join_with_user&quot;</span>)]
     </span><span class="kw">pub fn </span>join_with_user(
-        flags: <a href="flags.rs.html#481-542">UriFlags</a>,
+        flags: <a href="flags.rs.html#481-507">UriFlags</a>,
         scheme: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
         user: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
         password: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
@@ -951,7 +885,7 @@
     }
 
     <span class="attr">#[doc(alias = <span class="string">&quot;g_uri_parse&quot;</span>)]
-    </span><span class="kw">pub fn </span>parse(uri_string: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, flags: <a href="flags.rs.html#481-542">UriFlags</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<a href="#8-17">Uri</a>, <a href="../error.rs.html#10-22"><span class="kw">crate</span>::Error</a>&gt; {
+    </span><span class="kw">pub fn </span>parse(uri_string: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, flags: <a href="flags.rs.html#481-507">UriFlags</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<a href="#8-17">Uri</a>, <a href="../error.rs.html#10-22"><span class="kw">crate</span>::Error</a>&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
             <span class="kw">let </span>ret = ffi::g_uri_parse(<a href="#280">uri_string</a>.<a href="../translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>, <a href="#280">flags</a>.<a href="../translate.rs.html#330">into_glib</a>(), <span class="kw-2">&amp;mut </span><a href="#282">error</a>);
@@ -982,7 +916,7 @@
     </span><span class="kw">pub fn </span>resolve_relative(
         base_uri_string: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
         uri_ref: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
-        flags: <a href="flags.rs.html#481-542">UriFlags</a>,
+        flags: <a href="flags.rs.html#481-507">UriFlags</a>,
     ) -&gt; <span class="prelude-ty">Result</span>&lt;<a href="../gstring.rs.html#979"><span class="kw">crate</span>::GString</a>, <a href="../error.rs.html#10-22"><span class="kw">crate</span>::Error</a>&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
@@ -1003,7 +937,7 @@
     <span class="attr">#[doc(alias = <span class="string">&quot;g_uri_split&quot;</span>)]
     </span><span class="kw">pub fn </span>split(
         uri_ref: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
-        flags: <a href="flags.rs.html#481-542">UriFlags</a>,
+        flags: <a href="flags.rs.html#481-507">UriFlags</a>,
     ) -&gt; <span class="prelude-ty">Result</span>&lt;
         (
             <span class="prelude-ty">Option</span>&lt;<a href="../gstring.rs.html#979"><span class="kw">crate</span>::GString</a>&gt;,
@@ -1057,7 +991,7 @@
     <span class="attr">#[doc(alias = <span class="string">&quot;g_uri_split_network&quot;</span>)]
     </span><span class="kw">pub fn </span>split_network(
         uri_string: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
-        flags: <a href="flags.rs.html#481-542">UriFlags</a>,
+        flags: <a href="flags.rs.html#481-507">UriFlags</a>,
     ) -&gt; <span class="prelude-ty">Result</span>&lt;(<span class="prelude-ty">Option</span>&lt;<a href="../gstring.rs.html#979"><span class="kw">crate</span>::GString</a>&gt;, <span class="prelude-ty">Option</span>&lt;<a href="../gstring.rs.html#979"><span class="kw">crate</span>::GString</a>&gt;, <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>), <a href="../error.rs.html#10-22"><span class="kw">crate</span>::Error</a>&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>scheme = ptr::null_mut();
@@ -1088,7 +1022,7 @@
     <span class="attr">#[doc(alias = <span class="string">&quot;g_uri_split_with_user&quot;</span>)]
     </span><span class="kw">pub fn </span>split_with_user(
         uri_ref: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
-        flags: <a href="flags.rs.html#481-542">UriFlags</a>,
+        flags: <a href="flags.rs.html#481-507">UriFlags</a>,
     ) -&gt; <span class="prelude-ty">Result</span>&lt;
         (
             <span class="prelude-ty">Option</span>&lt;<a href="../gstring.rs.html#979"><span class="kw">crate</span>::GString</a>&gt;,
@@ -1147,78 +1081,29 @@
         }
     }
 
-    <span class="doccomment">/// Unescapes a segment of an escaped string as binary data.
-    ///
-    /// Note that in contrast to [`unescape_string()`][Self::unescape_string()], this does allow
-    /// nul bytes to appear in the output.
-    ///
-    /// If any of the characters in `illegal_characters` appears as an escaped
-    /// character in `escaped_string`, then that is an error and [`None`] will be
-    /// returned. This is useful if you want to avoid for instance having a slash
-    /// being expanded in an escaped path element, which might confuse pathname
-    /// handling.
-    /// ## `escaped_string`
-    /// A URI-escaped string
-    /// ## `length`
-    /// the length (in bytes) of `escaped_string` to escape, or `-1` if it
-    ///  is nul-terminated.
-    /// ## `illegal_characters`
-    /// a string of illegal characters
-    ///  not to be allowed, or [`None`].
-    ///
-    /// # Returns
-    ///
-    /// an unescaped version of `escaped_string`
-    ///  or [`None`] on error (if decoding failed, using [`UriError::Failed`][crate::UriError::Failed] error
-    ///  code). The returned [`Bytes`][crate::Bytes] should be unreffed when no longer needed.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_uri_unescape_bytes&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;g_uri_unescape_bytes&quot;</span>)]
     </span><span class="kw">pub fn </span>unescape_bytes(
         escaped_string: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
         illegal_characters: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
     ) -&gt; <span class="prelude-ty">Result</span>&lt;<a href="../bytes.rs.html#14-40">Bytes</a>, <a href="../error.rs.html#10-22"><span class="kw">crate</span>::Error</a>&gt; {
-        <span class="kw">let </span>length = <a href="#502">escaped_string</a>.len() <span class="kw">as _</span>;
+        <span class="kw">let </span>length = <a href="#478">escaped_string</a>.len() <span class="kw">as _</span>;
         <span class="kw">unsafe </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
             <span class="kw">let </span>ret = ffi::g_uri_unescape_bytes(
-                <a href="#502">escaped_string</a>.<a href="../translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
-                <a href="#505">length</a>,
-                <a href="#503">illegal_characters</a>.<a href="../translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
-                <span class="kw-2">&amp;mut </span><a href="#507">error</a>,
+                <a href="#478">escaped_string</a>.<a href="../translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#481">length</a>,
+                <a href="#479">illegal_characters</a>.<a href="../translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
+                <span class="kw-2">&amp;mut </span><a href="#483">error</a>,
             );
             <span class="kw">if </span>error.is_null() {
-                <span class="prelude-val">Ok</span>(<a href="../translate.rs.html#1630-1632">from_glib_full</a>(<a href="#508">ret</a>))
+                <span class="prelude-val">Ok</span>(<a href="../translate.rs.html#1630-1632">from_glib_full</a>(<a href="#484">ret</a>))
             } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(<a href="../translate.rs.html#1630-1632">from_glib_full</a>(<a href="#507">error</a>))
+                <span class="prelude-val">Err</span>(<a href="../translate.rs.html#1630-1632">from_glib_full</a>(<a href="#483">error</a>))
             }
         }
     }
 
-    <span class="doccomment">/// Unescapes a segment of an escaped string.
-    ///
-    /// If any of the characters in `illegal_characters` or the NUL
-    /// character appears as an escaped character in `escaped_string`, then
-    /// that is an error and [`None`] will be returned. This is useful if you
-    /// want to avoid for instance having a slash being expanded in an
-    /// escaped path element, which might confuse pathname handling.
-    ///
-    /// Note: `NUL` byte is not accepted in the output, in contrast to
-    /// [`unescape_bytes()`][Self::unescape_bytes()].
-    /// ## `escaped_string`
-    /// A string, may be [`None`]
-    /// ## `escaped_string_end`
-    /// Pointer to end of `escaped_string`,
-    ///  may be [`None`]
-    /// ## `illegal_characters`
-    /// An optional string of illegal
-    ///  characters not to be allowed, may be [`None`]
-    ///
-    /// # Returns
-    ///
-    /// an unescaped version of `escaped_string`,
-    /// or [`None`] on error. The returned string should be freed when no longer
-    /// needed. As a special case if [`None`] is given for `escaped_string`, this
-    /// function will return [`None`].
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_uri_unescape_segment&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;g_uri_unescape_segment&quot;</span>)]
     </span><span class="kw">pub fn </span>unescape_segment(
         escaped_string: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
         escaped_string_end: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
@@ -1226,39 +1111,22 @@
     ) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="../gstring.rs.html#979"><span class="kw">crate</span>::GString</a>&gt; {
         <span class="kw">unsafe </span>{
             <a href="../translate.rs.html#1630-1632">from_glib_full</a>(ffi::g_uri_unescape_segment(
-                <a href="#549">escaped_string</a>.<a href="../translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
-                <a href="#550">escaped_string_end</a>.<a href="../translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
-                <a href="#551">illegal_characters</a>.<a href="../translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#500">escaped_string</a>.<a href="../translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#501">escaped_string_end</a>.<a href="../translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#502">illegal_characters</a>.<a href="../translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
             ))
         }
     }
 
-    <span class="doccomment">/// Unescapes a whole escaped string.
-    ///
-    /// If any of the characters in `illegal_characters` or the NUL
-    /// character appears as an escaped character in `escaped_string`, then
-    /// that is an error and [`None`] will be returned. This is useful if you
-    /// want to avoid for instance having a slash being expanded in an
-    /// escaped path element, which might confuse pathname handling.
-    /// ## `escaped_string`
-    /// an escaped string to be unescaped.
-    /// ## `illegal_characters`
-    /// a string of illegal characters
-    ///  not to be allowed, or [`None`].
-    ///
-    /// # Returns
-    ///
-    /// an unescaped version of `escaped_string`.
-    /// The returned string should be freed when no longer needed.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_uri_unescape_string&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;g_uri_unescape_string&quot;</span>)]
     </span><span class="kw">pub fn </span>unescape_string(
         escaped_string: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
         illegal_characters: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
     ) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="../gstring.rs.html#979"><span class="kw">crate</span>::GString</a>&gt; {
         <span class="kw">unsafe </span>{
             <a href="../translate.rs.html#1630-1632">from_glib_full</a>(ffi::g_uri_unescape_string(
-                <a href="#581">escaped_string</a>.<a href="../translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
-                <a href="#582">illegal_characters</a>.<a href="../translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#515">escaped_string</a>.<a href="../translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#516">illegal_characters</a>.<a href="../translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
             ))
         }
     }
@@ -1267,7 +1135,7 @@
 <span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html">fmt::Display</a> <span class="kw">for </span><a href="#8-17">Uri</a> {
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span><a href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html">fmt::Formatter</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html">fmt::Result</a> {
-        <a href="#595">f</a>.write_str(<span class="kw-2">&amp;</span><a class="self" href="#595">self</a>.<a href="#106-108">to_str</a>())
+        <a href="#529">f</a>.write_str(<span class="kw-2">&amp;</span><a class="self" href="#529">self</a>.<a href="#106-108">to_str</a>())
     }
 }
 

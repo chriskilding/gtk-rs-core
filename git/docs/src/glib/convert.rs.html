@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/convert.rs`."><title>convert.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-cb6f1f67f1bcd037.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.73.0-nightly (1d56e3a6d 2023-07-22)" data-channel="nightly" data-search-js="search-6dfdfced5eff6596.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-6d2c9675f3d09c26.css" data-theme-dark-css="dark-45ceb8f2e522f4d1.css" data-theme-ayu-css="ayu-fd19013d6ce078bf.css" ><script src="../../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-6d2c9675f3d09c26.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-45ceb8f2e522f4d1.css"><link rel="stylesheet" href="../../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/convert.rs`."><title>convert.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-cb6f1f67f1bcd037.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.73.0-nightly (db7ff98a7 2023-07-31)" data-channel="nightly" data-search-js="search-6dfdfced5eff6596.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-6d2c9675f3d09c26.css" data-theme-dark-css="dark-45ceb8f2e522f4d1.css" data-theme-ayu-css="ayu-fd19013d6ce078bf.css" ><script src="../../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-6d2c9675f3d09c26.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-45ceb8f2e522f4d1.css"><link rel="stylesheet" href="../../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -712,6 +712,39 @@
 <a href="#639" id="639">639</a>
 <a href="#640" id="640">640</a>
 <a href="#641" id="641">641</a>
+<a href="#642" id="642">642</a>
+<a href="#643" id="643">643</a>
+<a href="#644" id="644">644</a>
+<a href="#645" id="645">645</a>
+<a href="#646" id="646">646</a>
+<a href="#647" id="647">647</a>
+<a href="#648" id="648">648</a>
+<a href="#649" id="649">649</a>
+<a href="#650" id="650">650</a>
+<a href="#651" id="651">651</a>
+<a href="#652" id="652">652</a>
+<a href="#653" id="653">653</a>
+<a href="#654" id="654">654</a>
+<a href="#655" id="655">655</a>
+<a href="#656" id="656">656</a>
+<a href="#657" id="657">657</a>
+<a href="#658" id="658">658</a>
+<a href="#659" id="659">659</a>
+<a href="#660" id="660">660</a>
+<a href="#661" id="661">661</a>
+<a href="#662" id="662">662</a>
+<a href="#663" id="663">663</a>
+<a href="#664" id="664">664</a>
+<a href="#665" id="665">665</a>
+<a href="#666" id="666">666</a>
+<a href="#667" id="667">667</a>
+<a href="#668" id="668">668</a>
+<a href="#669" id="669">669</a>
+<a href="#670" id="670">670</a>
+<a href="#671" id="671">671</a>
+<a href="#672" id="672">672</a>
+<a href="#673" id="673">673</a>
+<a href="#674" id="674">674</a>
 </pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span>std::{<a href="https://doc.rust-lang.org/nightly/std/io/index.html">io</a>, <a href="https://doc.rust-lang.org/nightly/std/os/raw/type.c_char.html">os::raw::c_char</a>, <a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">path::PathBuf</a>, <a href="https://doc.rust-lang.org/nightly/core/ptr/index.html">ptr</a>};
@@ -749,7 +782,45 @@
     }
 }
 
-<span class="attr">#[doc(alias = <span class="string">&quot;g_convert&quot;</span>)]
+<span class="doccomment">/// Converts a string from one character set to another.
+///
+/// Note that you should use [`iconv()`][crate::iconv()] for streaming conversions.
+/// Despite the fact that `bytes_read` can return information about partial
+/// characters, the g_convert_... functions are not generally suitable
+/// for streaming. If the underlying converter maintains internal state,
+/// then this won&#39;t be preserved across successive calls to [`convert()`][crate::convert()],
+/// [`convert()`][crate::convert()] or [`convert_with_fallback()`][crate::convert_with_fallback()]. (An example of
+/// this is the GNU C converter for CP1255 which does not emit a base
+/// character until it knows that the next character is not a mark that
+/// could combine with the base character.)
+///
+/// Using extensions such as &quot;//TRANSLIT&quot; may not work (or may not work
+/// well) on many platforms. Consider using `g_str_to_ascii()` instead.
+/// ## `str`
+///
+///  the string to convert.
+/// ## `to_codeset`
+/// name of character set into which to convert `str`
+/// ## `from_codeset`
+/// character set of `str`.
+///
+/// # Returns
+///
+///
+///  If the conversion was successful, a newly allocated buffer
+///  containing the converted string, which must be freed with `g_free()`.
+///  Otherwise [`None`] and `error` will be set.
+///
+/// ## `bytes_read`
+/// location to store the number of bytes in
+///  the input string that were successfully converted, or [`None`].
+///  Even if the conversion was successful, this may be
+///  less than `len` if there were partial characters
+///  at the end of the input. If the error
+///  [`ConvertError::IllegalSequence`][crate::ConvertError::IllegalSequence] occurs, the value
+///  stored will be the byte offset after the last valid
+///  input sequence.
+</span><span class="attr">#[doc(alias = <span class="string">&quot;g_convert&quot;</span>)]
 </span><span class="kw">pub fn </span><a href="../../glib/fn.convert.html">convert</a>(
     str_: <span class="kw-2">&amp;</span>[<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>],
     to_codeset: <span class="kw">impl </span><a href="gstring.rs.html#2280-2282">IntoGStr</a>,
@@ -759,28 +830,72 @@
     <span class="kw">let </span><span class="kw-2">mut </span>bytes_read = <span class="number">0</span>;
     <span class="kw">let </span><span class="kw-2">mut </span>bytes_written = <span class="number">0</span>;
     <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-    <span class="kw">let </span>result = <a href="#41">to_codeset</a>.<a href="gstring.rs.html#2281">run_with_gstr</a>(|to_codeset| {
-        <a href="#42">from_codeset</a>.<a href="gstring.rs.html#2281">run_with_gstr</a>(|from_codeset| <span class="kw">unsafe </span>{
+    <span class="kw">let </span>result = <a href="#79">to_codeset</a>.<a href="gstring.rs.html#2281">run_with_gstr</a>(|to_codeset| {
+        <a href="#80">from_codeset</a>.<a href="gstring.rs.html#2281">run_with_gstr</a>(|from_codeset| <span class="kw">unsafe </span>{
             ffi::g_convert(
-                <a href="#40">str_</a>.as_ptr(),
-                <a href="#40">str_</a>.len() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>,
-                <a href="#48">to_codeset</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
-                <a href="#49">from_codeset</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
-                <span class="kw-2">&amp;mut </span><a href="#45">bytes_read</a>,
-                <span class="kw-2">&amp;mut </span><a href="#46">bytes_written</a>,
-                <span class="kw-2">&amp;mut </span><a href="#47">error</a>,
+                <a href="#78">str_</a>.as_ptr(),
+                <a href="#78">str_</a>.len() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>,
+                <a href="#86">to_codeset</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#87">from_codeset</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
+                <span class="kw-2">&amp;mut </span><a href="#83">bytes_read</a>,
+                <span class="kw-2">&amp;mut </span><a href="#84">bytes_written</a>,
+                <span class="kw-2">&amp;mut </span><a href="#85">error</a>,
             )
         })
     });
     <span class="kw">if </span>result.is_null() {
-        <span class="prelude-val">Err</span>(CvtError::new(<span class="kw">unsafe </span>{ <a href="translate.rs.html#1630-1632">from_glib_full</a>(<a href="#47">error</a>) }, <a href="#45">bytes_read</a>))
+        <span class="prelude-val">Err</span>(CvtError::new(<span class="kw">unsafe </span>{ <a href="translate.rs.html#1630-1632">from_glib_full</a>(<a href="#85">error</a>) }, <a href="#83">bytes_read</a>))
     } <span class="kw">else </span>{
-        <span class="kw">let </span>slice = <span class="kw">unsafe </span>{ Slice::from_glib_full_num(<a href="#48">result</a>, <a href="#46">bytes_written</a> <span class="kw">as _</span>) };
-        <span class="prelude-val">Ok</span>((<a href="#64">slice</a>, <a href="#45">bytes_read</a>))
+        <span class="kw">let </span>slice = <span class="kw">unsafe </span>{ Slice::from_glib_full_num(<a href="#86">result</a>, <a href="#84">bytes_written</a> <span class="kw">as _</span>) };
+        <span class="prelude-val">Ok</span>((<a href="#102">slice</a>, <a href="#83">bytes_read</a>))
     }
 }
 
-<span class="attr">#[doc(alias = <span class="string">&quot;g_convert_with_fallback&quot;</span>)]
+<span class="doccomment">/// Converts a string from one character set to another, possibly
+/// including fallback sequences for characters not representable
+/// in the output. Note that it is not guaranteed that the specification
+/// for the fallback sequences in `fallback` will be honored. Some
+/// systems may do an approximate conversion from `from_codeset`
+/// to `to_codeset` in their `iconv()` functions,
+/// in which case GLib will simply return that approximate conversion.
+///
+/// Note that you should use [`iconv()`][crate::iconv()] for streaming conversions.
+/// Despite the fact that `bytes_read` can return information about partial
+/// characters, the g_convert_... functions are not generally suitable
+/// for streaming. If the underlying converter maintains internal state,
+/// then this won&#39;t be preserved across successive calls to [`convert()`][crate::convert()],
+/// [`convert()`][crate::convert()] or [`convert_with_fallback()`][crate::convert_with_fallback()]. (An example of
+/// this is the GNU C converter for CP1255 which does not emit a base
+/// character until it knows that the next character is not a mark that
+/// could combine with the base character.)
+/// ## `str`
+///
+///  the string to convert.
+/// ## `to_codeset`
+/// name of character set into which to convert `str`
+/// ## `from_codeset`
+/// character set of `str`.
+/// ## `fallback`
+/// UTF-8 string to use in place of characters not
+///  present in the target encoding. (The string must be
+///  representable in the target encoding).
+///  If [`None`], characters not in the target encoding will
+///  be represented as Unicode escapes \uxxxx or \Uxxxxyyyy.
+///
+/// # Returns
+///
+///
+///  If the conversion was successful, a newly allocated buffer
+///  containing the converted string, which must be freed with `g_free()`.
+///  Otherwise [`None`] and `error` will be set.
+///
+/// ## `bytes_read`
+/// location to store the number of bytes in
+///  the input string that were successfully converted, or [`None`].
+///  Even if the conversion was successful, this may be
+///  less than `len` if there were partial characters
+///  at the end of the input.
+</span><span class="attr">#[doc(alias = <span class="string">&quot;g_convert_with_fallback&quot;</span>)]
 </span><span class="kw">pub fn </span><a href="../../glib/fn.convert_with_fallback.html">convert_with_fallback</a>(
     str_: <span class="kw-2">&amp;</span>[<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>],
     to_codeset: <span class="kw">impl </span><a href="gstring.rs.html#2280-2282">IntoGStr</a>,
@@ -791,34 +906,34 @@
     <span class="kw">let </span><span class="kw-2">mut </span>bytes_read = <span class="number">0</span>;
     <span class="kw">let </span><span class="kw-2">mut </span>bytes_written = <span class="number">0</span>;
     <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-    <span class="kw">let </span>result = <a href="#72">to_codeset</a>.<a href="gstring.rs.html#2281">run_with_gstr</a>(|to_codeset| {
-        <a href="#73">from_codeset</a>.<a href="gstring.rs.html#2281">run_with_gstr</a>(|from_codeset| {
-            <a href="#74">fallback</a>.<a href="gstring.rs.html#2357">run_with_gstr</a>(|fallback| <span class="kw">unsafe </span>{
+    <span class="kw">let </span>result = <a href="#154">to_codeset</a>.<a href="gstring.rs.html#2281">run_with_gstr</a>(|to_codeset| {
+        <a href="#155">from_codeset</a>.<a href="gstring.rs.html#2281">run_with_gstr</a>(|from_codeset| {
+            <a href="#156">fallback</a>.<a href="gstring.rs.html#2357">run_with_gstr</a>(|fallback| <span class="kw">unsafe </span>{
                 ffi::g_convert_with_fallback(
-                    <a href="#71">str_</a>.as_ptr(),
-                    <a href="#71">str_</a>.len() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>,
-                    <a href="#80">to_codeset</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#81">from_codeset</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
-                    <a href="#82">fallback</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
-                    <span class="kw-2">&amp;mut </span><a href="#77">bytes_read</a>,
-                    <span class="kw-2">&amp;mut </span><a href="#78">bytes_written</a>,
-                    <span class="kw-2">&amp;mut </span><a href="#79">error</a>,
+                    <a href="#153">str_</a>.as_ptr(),
+                    <a href="#153">str_</a>.len() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>,
+                    <a href="#162">to_codeset</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#163">from_codeset</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
+                    <a href="#164">fallback</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
+                    <span class="kw-2">&amp;mut </span><a href="#159">bytes_read</a>,
+                    <span class="kw-2">&amp;mut </span><a href="#160">bytes_written</a>,
+                    <span class="kw-2">&amp;mut </span><a href="#161">error</a>,
                 )
             })
         })
     });
     <span class="kw">if </span>result.is_null() {
-        <span class="prelude-val">Err</span>(CvtError::new(<span class="kw">unsafe </span>{ <a href="translate.rs.html#1630-1632">from_glib_full</a>(<a href="#79">error</a>) }, <a href="#77">bytes_read</a>))
+        <span class="prelude-val">Err</span>(CvtError::new(<span class="kw">unsafe </span>{ <a href="translate.rs.html#1630-1632">from_glib_full</a>(<a href="#161">error</a>) }, <a href="#159">bytes_read</a>))
     } <span class="kw">else </span>{
-        <span class="kw">let </span>slice = <span class="kw">unsafe </span>{ Slice::from_glib_full_num(<a href="#80">result</a>, <a href="#78">bytes_written</a> <span class="kw">as _</span>) };
-        <span class="prelude-val">Ok</span>((<a href="#99">slice</a>, <a href="#77">bytes_read</a>))
+        <span class="kw">let </span>slice = <span class="kw">unsafe </span>{ Slice::from_glib_full_num(<a href="#162">result</a>, <a href="#160">bytes_written</a> <span class="kw">as _</span>) };
+        <span class="prelude-val">Ok</span>((<a href="#181">slice</a>, <a href="#159">bytes_read</a>))
     }
 }
 
 <span class="comment">// rustdoc-stripper-ignore-next
 </span><span class="doccomment">/// A wrapper for [`std::io::Error`] that can hold an offset into an input string.
 </span><span class="attr">#[derive(thiserror::Error, Debug)]
-</span><span class="kw">pub enum </span><a href="#107-116">IConvError</a> {
+</span><span class="kw">pub enum </span><a href="#189-198">IConvError</a> {
     <span class="attr">#[error(transparent)]
     </span>Error(<span class="attr">#[from] </span><a href="https://doc.rust-lang.org/nightly/std/io/error/struct.Error.html">io::Error</a>),
     <span class="attr">#[error(<span class="string">&quot;{source} at offset {offset}&quot;</span>)]
@@ -834,20 +949,61 @@
 #[doc(alias = <span class="string">&quot;GIConv&quot;</span>)]
 </span><span class="kw">pub struct </span><a href="../../glib/struct.IConv.html">IConv</a>(ffi::GIConv);
 
-<span class="kw">unsafe impl </span><a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> <span class="kw">for </span><a href="#121">IConv</a> {}
+<span class="kw">unsafe impl </span><a href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html">Send</a> <span class="kw">for </span><a href="#203">IConv</a> {}
 
-<span class="kw">impl </span><a href="#121">IConv</a> {
+<span class="kw">impl </span><a href="#203">IConv</a> {
     <span class="attr">#[doc(alias = <span class="string">&quot;g_iconv_open&quot;</span>)]
     #[allow(clippy::unnecessary_lazy_evaluations)]
     </span><span class="kw">pub fn </span>new(to_codeset: <span class="kw">impl </span><a href="gstring.rs.html#2280-2282">IntoGStr</a>, from_codeset: <span class="kw">impl </span><a href="gstring.rs.html#2280-2282">IntoGStr</a>) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="self">Self</span>&gt; {
-        <span class="kw">let </span>iconv = <a href="#128">to_codeset</a>.<a href="gstring.rs.html#2281">run_with_gstr</a>(|to_codeset| {
-            <a href="#128">from_codeset</a>.<a href="gstring.rs.html#2281">run_with_gstr</a>(|from_codeset| <span class="kw">unsafe </span>{
-                ffi::g_iconv_open(<a href="#129">to_codeset</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>, <a href="#130">from_codeset</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>)
+        <span class="kw">let </span>iconv = <a href="#210">to_codeset</a>.<a href="gstring.rs.html#2281">run_with_gstr</a>(|to_codeset| {
+            <a href="#210">from_codeset</a>.<a href="gstring.rs.html#2281">run_with_gstr</a>(|from_codeset| <span class="kw">unsafe </span>{
+                ffi::g_iconv_open(<a href="#211">to_codeset</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>, <a href="#212">from_codeset</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>)
             })
         });
-        (<a href="#129">iconv</a> <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a> != -<span class="number">1</span>).then(|| <span class="self">Self</span>(<a href="#129">iconv</a>))
+        (<a href="#211">iconv</a> <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a> != -<span class="number">1</span>).then(|| <span class="self">Self</span>(<a href="#211">iconv</a>))
     }
-    <span class="attr">#[doc(alias = <span class="string">&quot;g_convert_with_iconv&quot;</span>)]
+    <span class="doccomment">/// Converts a string from one character set to another.
+    ///
+    /// Note that you should use [`iconv()`][crate::iconv()] for streaming conversions.
+    /// Despite the fact that `bytes_read` can return information about partial
+    /// characters, the g_convert_... functions are not generally suitable
+    /// for streaming. If the underlying converter maintains internal state,
+    /// then this won&#39;t be preserved across successive calls to [`convert()`][crate::convert()],
+    /// [`convert()`][crate::convert()] or [`convert_with_fallback()`][crate::convert_with_fallback()]. (An example of
+    /// this is the GNU C converter for CP1255 which does not emit a base
+    /// character until it knows that the next character is not a mark that
+    /// could combine with the base character.)
+    ///
+    /// Characters which are valid in the input character set, but which have no
+    /// representation in the output character set will result in a
+    /// [`ConvertError::IllegalSequence`][crate::ConvertError::IllegalSequence] error. This is in contrast to the `iconv()`
+    /// specification, which leaves this behaviour implementation defined. Note that
+    /// this is the same error code as is returned for an invalid byte sequence in
+    /// the input character set. To get defined behaviour for conversion of
+    /// unrepresentable characters, use [`convert_with_fallback()`][crate::convert_with_fallback()].
+    /// ## `str`
+    ///
+    ///  the string to convert.
+    /// ## `converter`
+    /// conversion descriptor from [`IConv::new()`][crate::IConv::new()]
+    ///
+    /// # Returns
+    ///
+    ///
+    ///  If the conversion was successful, a newly allocated buffer
+    ///  containing the converted string, which must be freed with
+    ///  `g_free()`. Otherwise [`None`] and `error` will be set.
+    ///
+    /// ## `bytes_read`
+    /// location to store the number of bytes in
+    ///  the input string that were successfully converted, or [`None`].
+    ///  Even if the conversion was successful, this may be
+    ///  less than `len` if there were partial characters
+    ///  at the end of the input. If the error
+    ///  [`ConvertError::IllegalSequence`][crate::ConvertError::IllegalSequence] occurs, the value
+    ///  stored will be the byte offset after the last valid
+    ///  input sequence.
+    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_convert_with_iconv&quot;</span>)]
     </span><span class="kw">pub fn </span>convert(<span class="kw-2">&amp;mut </span><span class="self">self</span>, str_: <span class="kw-2">&amp;</span>[<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>]) -&gt; <span class="prelude-ty">Result</span>&lt;(Slice&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;, <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>), <a href="#13-22">CvtError</a>&gt; {
         <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.assert.html">assert!</a>(str_.len() &lt;= isize::MAX <span class="kw">as </span>usize);
         <span class="kw">let </span><span class="kw-2">mut </span>bytes_read = <span class="number">0</span>;
@@ -855,94 +1011,67 @@
         <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
         <span class="kw">let </span>result = <span class="kw">unsafe </span>{
             ffi::g_convert_with_iconv(
-                <a href="#137">str_</a>.as_ptr(),
-                <a href="#137">str_</a>.len() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>,
-                <a class="self" href="#137">self</a>.<span class="number">0</span>,
-                <span class="kw-2">&amp;mut </span><a href="#139">bytes_read</a>,
-                <span class="kw-2">&amp;mut </span><a href="#140">bytes_written</a>,
-                <span class="kw-2">&amp;mut </span><a href="#141">error</a>,
+                <a href="#260">str_</a>.as_ptr(),
+                <a href="#260">str_</a>.len() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>,
+                <a class="self" href="#260">self</a>.<span class="number">0</span>,
+                <span class="kw-2">&amp;mut </span><a href="#262">bytes_read</a>,
+                <span class="kw-2">&amp;mut </span><a href="#263">bytes_written</a>,
+                <span class="kw-2">&amp;mut </span><a href="#264">error</a>,
             )
         };
         <span class="kw">if </span>result.is_null() {
-            <span class="prelude-val">Err</span>(CvtError::new(<span class="kw">unsafe </span>{ <a href="translate.rs.html#1630-1632">from_glib_full</a>(<a href="#141">error</a>) }, <a href="#139">bytes_read</a>))
+            <span class="prelude-val">Err</span>(CvtError::new(<span class="kw">unsafe </span>{ <a href="translate.rs.html#1630-1632">from_glib_full</a>(<a href="#264">error</a>) }, <a href="#262">bytes_read</a>))
         } <span class="kw">else </span>{
-            <span class="kw">let </span>slice = <span class="kw">unsafe </span>{ Slice::from_glib_full_num(<a href="#142">result</a>, <a href="#140">bytes_written</a> <span class="kw">as _</span>) };
-            <span class="prelude-val">Ok</span>((<a href="#155">slice</a>, <a href="#139">bytes_read</a>))
+            <span class="kw">let </span>slice = <span class="kw">unsafe </span>{ Slice::from_glib_full_num(<a href="#265">result</a>, <a href="#263">bytes_written</a> <span class="kw">as _</span>) };
+            <span class="prelude-val">Ok</span>((<a href="#278">slice</a>, <a href="#262">bytes_read</a>))
         }
     }
-    <span class="doccomment">/// Same as the standard UNIX routine `iconv()`, but
-    /// may be implemented via libiconv on UNIX flavors that lack
-    /// a native implementation.
-    ///
-    /// GLib provides [`convert()`][crate::convert()] and [`locale_to_utf8()`][crate::locale_to_utf8()] which are likely
-    /// more convenient than the raw iconv wrappers.
-    ///
-    /// Note that the behaviour of `iconv()` for characters which are valid in the
-    /// input character set, but which have no representation in the output character
-    /// set, is implementation defined. This function may return success (with a
-    /// positive number of non-reversible conversions as replacement characters were
-    /// used), or it may return -1 and set an error such as `EILSEQ`, in such a
-    /// situation.
-    /// ## `converter`
-    /// conversion descriptor from [`IConv::new()`][crate::IConv::new()]
-    /// ## `inbuf`
-    /// bytes to convert
-    /// ## `inbytes_left`
-    /// inout parameter, bytes remaining to convert in `inbuf`
-    /// ## `outbuf`
-    /// converted output bytes
-    /// ## `outbytes_left`
-    /// inout parameter, bytes available to fill in `outbuf`
-    ///
-    /// # Returns
-    ///
-    /// count of non-reversible conversions, or -1 on error
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_iconv&quot;</span>)]
+    <span class="attr">#[doc(alias = <span class="string">&quot;g_iconv&quot;</span>)]
     </span><span class="kw">pub fn </span>iconv(
         <span class="kw-2">&amp;mut </span><span class="self">self</span>,
         inbuf: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>[<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>]&gt;,
         outbuf: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;mut </span>[std::mem::MaybeUninit&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;]&gt;,
-    ) -&gt; <span class="prelude-ty">Result</span>&lt;(<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>), <a href="#107-116">IConvError</a>&gt; {
-        <span class="kw">let </span>input_len = <a href="#189">inbuf</a>.as_ref().map(|b| <a href="#192">b</a>.len()).unwrap_or_default();
-        <span class="kw">let </span><span class="kw-2">mut </span>inbytes_left = <a href="#192">input_len</a>;
-        <span class="kw">let </span><span class="kw-2">mut </span>outbytes_left = <a href="#190">outbuf</a>.as_ref().map(|b| <a href="#194">b</a>.len()).unwrap_or_default();
-        <span class="kw">let </span><span class="kw-2">mut </span>inbuf = <a href="#189">inbuf</a>
-            .map(|b| <a href="translate.rs.html#198-200">mut_override</a>(<a href="#196">b</a>.as_ptr()) <span class="kw">as </span><span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/os/raw/type.c_char.html">c_char</a>)
+    ) -&gt; <span class="prelude-ty">Result</span>&lt;(<a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>), <a href="#189-198">IConvError</a>&gt; {
+        <span class="kw">let </span>input_len = <a href="#285">inbuf</a>.as_ref().map(|b| <a href="#288">b</a>.len()).unwrap_or_default();
+        <span class="kw">let </span><span class="kw-2">mut </span>inbytes_left = <a href="#288">input_len</a>;
+        <span class="kw">let </span><span class="kw-2">mut </span>outbytes_left = <a href="#286">outbuf</a>.as_ref().map(|b| <a href="#290">b</a>.len()).unwrap_or_default();
+        <span class="kw">let </span><span class="kw-2">mut </span>inbuf = <a href="#285">inbuf</a>
+            .map(|b| <a href="translate.rs.html#198-200">mut_override</a>(<a href="#292">b</a>.as_ptr()) <span class="kw">as </span><span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/os/raw/type.c_char.html">c_char</a>)
             .unwrap_or_else(ptr::null_mut);
-        <span class="kw">let </span><span class="kw-2">mut </span>outbuf = <a href="#190">outbuf</a>
-            .map(|b| <a href="#199">b</a>.as_mut_ptr() <span class="kw">as </span><span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/os/raw/type.c_char.html">c_char</a>)
+        <span class="kw">let </span><span class="kw-2">mut </span>outbuf = <a href="#286">outbuf</a>
+            .map(|b| <a href="#295">b</a>.as_mut_ptr() <span class="kw">as </span><span class="kw-2">*mut </span><a href="https://doc.rust-lang.org/nightly/std/os/raw/type.c_char.html">c_char</a>)
             .unwrap_or_else(ptr::null_mut);
         <span class="kw">let </span>conversions = <span class="kw">unsafe </span>{
             ffi::g_iconv(
-                <a class="self" href="#188">self</a>.<span class="number">0</span>,
-                <span class="kw-2">&amp;mut </span><a href="#195">inbuf</a>,
-                <span class="kw-2">&amp;mut </span><a href="#193">inbytes_left</a>,
-                <span class="kw-2">&amp;mut </span><a href="#198">outbuf</a>,
-                <span class="kw-2">&amp;mut </span><a href="#194">outbytes_left</a>,
+                <a class="self" href="#284">self</a>.<span class="number">0</span>,
+                <span class="kw-2">&amp;mut </span><a href="#291">inbuf</a>,
+                <span class="kw-2">&amp;mut </span><a href="#289">inbytes_left</a>,
+                <span class="kw-2">&amp;mut </span><a href="#294">outbuf</a>,
+                <span class="kw-2">&amp;mut </span><a href="#290">outbytes_left</a>,
             )
         };
         <span class="kw">if </span>conversions <span class="kw">as </span>isize == -<span class="number">1 </span>{
             <span class="kw">let </span>err = io::Error::last_os_error();
-            <span class="kw">let </span>code = <a href="#211">err</a>.raw_os_error().unwrap();
+            <span class="kw">let </span>code = <a href="#307">err</a>.raw_os_error().unwrap();
             <span class="kw">if </span>code == libc::EILSEQ || code == libc::EINVAL {
-                <span class="prelude-val">Err</span>(<a href="#111-115">IConvError::WithOffset</a> {
-                    source: <a href="#211">err</a>,
-                    offset: <a href="#192">input_len</a> - <a href="#193">inbytes_left</a>,
+                <span class="prelude-val">Err</span>(<a href="#193-197">IConvError::WithOffset</a> {
+                    source: <a href="#307">err</a>,
+                    offset: <a href="#288">input_len</a> - <a href="#289">inbytes_left</a>,
                 })
             } <span class="kw">else </span>{
-                <span class="prelude-val">Err</span>(<a href="#211">err</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html">into</a>())
+                <span class="prelude-val">Err</span>(<a href="#307">err</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html">into</a>())
             }
         } <span class="kw">else </span>{
-            <span class="prelude-val">Ok</span>((<a href="#201">conversions</a>, <a href="#193">inbytes_left</a>, <a href="#194">outbytes_left</a>))
+            <span class="prelude-val">Ok</span>((<a href="#297">conversions</a>, <a href="#289">inbytes_left</a>, <a href="#290">outbytes_left</a>))
         }
     }
 }
 
-<span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html">Drop</a> <span class="kw">for </span><a href="#121">IConv</a> {
+<span class="kw">impl </span><a href="https://doc.rust-lang.org/nightly/core/ops/drop/trait.Drop.html">Drop</a> <span class="kw">for </span><a href="#203">IConv</a> {
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>drop(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
         <span class="kw">unsafe </span>{
-            ffi::g_iconv_close(<a class="self" href="#229">self</a>.<span class="number">0</span>);
+            ffi::g_iconv_close(<a class="self" href="#325">self</a>.<span class="number">0</span>);
         }
     }
 }
@@ -984,10 +1113,10 @@
 </span><span class="kw">pub fn </span><a href="../../glib/fn.filename_charsets.html">filename_charsets</a>() -&gt; (<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, Vec&lt;<a href="gstring.rs.html#979">GString</a>&gt;) {
     <span class="kw">let </span><span class="kw-2">mut </span>filename_charsets = ptr::null_mut();
     <span class="kw">unsafe </span>{
-        <span class="kw">let </span>is_utf8 = ffi::g_get_filename_charsets(<span class="kw-2">&amp;mut </span><a href="#271">filename_charsets</a>);
+        <span class="kw">let </span>is_utf8 = ffi::g_get_filename_charsets(<span class="kw-2">&amp;mut </span><a href="#367">filename_charsets</a>);
         (
-            <a href="translate.rs.html#1413-1415">from_glib</a>(<a href="#273">is_utf8</a>),
-            <a href="translate.rs.html#1928">FromGlibPtrContainer::from_glib_none</a>(<a href="#271">filename_charsets</a>),
+            <a href="translate.rs.html#1413-1415">from_glib</a>(<a href="#369">is_utf8</a>),
+            <a href="translate.rs.html#1928">FromGlibPtrContainer::from_glib_none</a>(<a href="#367">filename_charsets</a>),
         )
     }
 }
@@ -1031,28 +1160,28 @@
     <span class="kw">let </span><span class="kw-2">mut </span>bytes_read = <span class="number">0</span>;
     <span class="kw">let </span><span class="kw-2">mut </span>bytes_written = std::mem::MaybeUninit::uninit();
     <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-    <span class="kw">let </span>ret = <a href="#316">utf8string</a>.<a href="gstring.rs.html#2281">run_with_gstr</a>(|utf8string| {
+    <span class="kw">let </span>ret = <a href="#412">utf8string</a>.<a href="gstring.rs.html#2281">run_with_gstr</a>(|utf8string| {
         <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.assert.html">assert!</a>(utf8string.len() &lt;= isize::MAX <span class="kw">as </span>usize);
-        <span class="kw">let </span>len = <a href="#320">utf8string</a>.len() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>;
+        <span class="kw">let </span>len = <a href="#416">utf8string</a>.len() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>;
         <span class="kw">unsafe </span>{
             ffi::g_filename_from_utf8(
-                <a href="#320">utf8string</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
-                <a href="#322">len</a>,
-                <span class="kw-2">&amp;mut </span><a href="#317">bytes_read</a>,
-                <a href="#318">bytes_written</a>.as_mut_ptr(),
-                <span class="kw-2">&amp;mut </span><a href="#319">error</a>,
+                <a href="#416">utf8string</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#418">len</a>,
+                <span class="kw-2">&amp;mut </span><a href="#413">bytes_read</a>,
+                <a href="#414">bytes_written</a>.as_mut_ptr(),
+                <span class="kw-2">&amp;mut </span><a href="#415">error</a>,
             )
         }
     });
     <span class="kw">if </span>error.is_null() {
         <span class="prelude-val">Ok</span>(<span class="kw">unsafe </span>{
             (
-                PathBuf::from_glib_full_num(<a href="#320">ret</a>, <a href="#318">bytes_written</a>.assume_init()),
-                <a href="#317">bytes_read</a>,
+                PathBuf::from_glib_full_num(<a href="#416">ret</a>, <a href="#414">bytes_written</a>.assume_init()),
+                <a href="#413">bytes_read</a>,
             )
         })
     } <span class="kw">else </span>{
-        <span class="prelude-val">Err</span>(<span class="kw">unsafe </span>{ CvtError::new(<a href="translate.rs.html#1630-1632">from_glib_full</a>(<a href="#319">error</a>), <a href="#317">bytes_read</a>) })
+        <span class="prelude-val">Err</span>(<span class="kw">unsafe </span>{ CvtError::new(<a href="translate.rs.html#1630-1632">from_glib_full</a>(<a href="#415">error</a>), <a href="#413">bytes_read</a>) })
     }
 }
 
@@ -1097,147 +1226,84 @@
 </span><span class="kw">pub fn </span><a href="../../glib/fn.filename_to_utf8.html">filename_to_utf8</a>(
     opsysstring: <span class="kw">impl </span>AsRef&lt;<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">std::path::Path</a>&gt;,
 ) -&gt; <span class="prelude-ty">Result</span>&lt;(<a href="gstring.rs.html#979"><span class="kw">crate</span>::GString</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>), <a href="#13-22">CvtError</a>&gt; {
-    <span class="kw">let </span>path = <a href="#384">opsysstring</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html">as_ref</a>().<a href="translate.rs.html#437">to_glib_none</a>();
+    <span class="kw">let </span>path = <a href="#480">opsysstring</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html">as_ref</a>().<a href="translate.rs.html#437">to_glib_none</a>();
     <span class="kw">let </span><span class="kw-2">mut </span>bytes_read = <span class="number">0</span>;
     <span class="kw">let </span><span class="kw-2">mut </span>bytes_written = std::mem::MaybeUninit::uninit();
     <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
     <span class="kw">let </span>ret = <span class="kw">unsafe </span>{
         ffi::g_filename_to_utf8(
-            <a href="#386">path</a>.<span class="number">0</span>,
-            <a href="#386">path</a>.<span class="number">1</span>.as_bytes().len() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>,
-            <span class="kw-2">&amp;mut </span><a href="#387">bytes_read</a>,
-            <a href="#388">bytes_written</a>.as_mut_ptr(),
-            <span class="kw-2">&amp;mut </span><a href="#389">error</a>,
+            <a href="#482">path</a>.<span class="number">0</span>,
+            <a href="#482">path</a>.<span class="number">1</span>.as_bytes().len() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>,
+            <span class="kw-2">&amp;mut </span><a href="#483">bytes_read</a>,
+            <a href="#484">bytes_written</a>.as_mut_ptr(),
+            <span class="kw-2">&amp;mut </span><a href="#485">error</a>,
         )
     };
     <span class="kw">if </span>error.is_null() {
         <span class="prelude-val">Ok</span>(<span class="kw">unsafe </span>{
             (
-                GString::from_glib_full_num(<a href="#390">ret</a>, <a href="#388">bytes_written</a>.assume_init()),
-                <a href="#387">bytes_read</a>,
+                GString::from_glib_full_num(<a href="#486">ret</a>, <a href="#484">bytes_written</a>.assume_init()),
+                <a href="#483">bytes_read</a>,
             )
         })
     } <span class="kw">else </span>{
-        <span class="prelude-val">Err</span>(<span class="kw">unsafe </span>{ CvtError::new(<a href="translate.rs.html#1630-1632">from_glib_full</a>(<a href="#389">error</a>), <a href="#387">bytes_read</a>) })
+        <span class="prelude-val">Err</span>(<span class="kw">unsafe </span>{ CvtError::new(<a href="translate.rs.html#1630-1632">from_glib_full</a>(<a href="#485">error</a>), <a href="#483">bytes_read</a>) })
     }
 }
 
-<span class="doccomment">/// Converts a string from UTF-8 to the encoding used for strings by
-/// the C runtime (usually the same as that used by the operating
-/// system) in the [current locale][setlocale]. On Windows this means
-/// the system codepage.
-///
-/// The input string shall not contain nul characters even if the `len`
-/// argument is positive. A nul character found inside the string will result
-/// in error [`ConvertError::IllegalSequence`][crate::ConvertError::IllegalSequence]. Use [`convert()`][crate::convert()] to convert
-/// input that may contain embedded nul characters.
-/// ## `utf8string`
-/// a UTF-8 encoded string
-/// ## `len`
-/// the length of the string, or -1 if the string is
-///  nul-terminated.
-///
-/// # Returns
-///
-///
-///  A newly-allocated buffer containing the converted string,
-///  or [`None`] on an error, and error will be set.
-///
-/// ## `bytes_read`
-/// location to store the number of bytes in the
-///  input string that were successfully converted, or [`None`].
-///  Even if the conversion was successful, this may be
-///  less than `len` if there were partial characters
-///  at the end of the input. If the error
-///  [`ConvertError::IllegalSequence`][crate::ConvertError::IllegalSequence] occurs, the value
-///  stored will be the byte offset after the last valid
-///  input sequence.
-</span><span class="attr">#[doc(alias = <span class="string">&quot;g_locale_from_utf8&quot;</span>)]
+<span class="attr">#[doc(alias = <span class="string">&quot;g_locale_from_utf8&quot;</span>)]
 </span><span class="kw">pub fn </span><a href="../../glib/fn.locale_from_utf8.html">locale_from_utf8</a>(utf8string: <span class="kw">impl </span><a href="gstring.rs.html#2280-2282">IntoGStr</a>) -&gt; <span class="prelude-ty">Result</span>&lt;(Slice&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;, <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>), <a href="#13-22">CvtError</a>&gt; {
     <span class="kw">let </span><span class="kw-2">mut </span>bytes_read = <span class="number">0</span>;
     <span class="kw">let </span><span class="kw-2">mut </span>bytes_written = std::mem::MaybeUninit::uninit();
     <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
-    <span class="kw">let </span>ret = <a href="#442">utf8string</a>.<a href="gstring.rs.html#2281">run_with_gstr</a>(|utf8string| {
+    <span class="kw">let </span>ret = <a href="#508">utf8string</a>.<a href="gstring.rs.html#2281">run_with_gstr</a>(|utf8string| {
         <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.assert.html">assert!</a>(utf8string.len() &lt;= isize::MAX <span class="kw">as </span>usize);
         <span class="kw">unsafe </span>{
             ffi::g_locale_from_utf8(
-                <a href="#446">utf8string</a>.<a href="gstring.rs.html#207-209">as_ptr</a>(),
-                <a href="#446">utf8string</a>.len() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>,
-                <span class="kw-2">&amp;mut </span><a href="#443">bytes_read</a>,
-                <a href="#444">bytes_written</a>.as_mut_ptr(),
-                <span class="kw-2">&amp;mut </span><a href="#445">error</a>,
+                <a href="#512">utf8string</a>.<a href="gstring.rs.html#207-209">as_ptr</a>(),
+                <a href="#512">utf8string</a>.len() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>,
+                <span class="kw-2">&amp;mut </span><a href="#509">bytes_read</a>,
+                <a href="#510">bytes_written</a>.as_mut_ptr(),
+                <span class="kw-2">&amp;mut </span><a href="#511">error</a>,
             )
         }
     });
     <span class="kw">if </span>error.is_null() {
         <span class="prelude-val">Ok</span>(<span class="kw">unsafe </span>{
             (
-                Slice::from_glib_full_num(<a href="#446">ret</a>, <a href="#444">bytes_written</a>.assume_init() + <span class="number">1</span>),
-                <a href="#443">bytes_read</a>,
+                Slice::from_glib_full_num(<a href="#512">ret</a>, <a href="#510">bytes_written</a>.assume_init() + <span class="number">1</span>),
+                <a href="#509">bytes_read</a>,
             )
         })
     } <span class="kw">else </span>{
-        <span class="prelude-val">Err</span>(<span class="kw">unsafe </span>{ CvtError::new(<a href="translate.rs.html#1630-1632">from_glib_full</a>(<a href="#445">error</a>), <a href="#443">bytes_read</a>) })
+        <span class="prelude-val">Err</span>(<span class="kw">unsafe </span>{ CvtError::new(<a href="translate.rs.html#1630-1632">from_glib_full</a>(<a href="#511">error</a>), <a href="#509">bytes_read</a>) })
     }
 }
 
-<span class="doccomment">/// Converts a string which is in the encoding used for strings by
-/// the C runtime (usually the same as that used by the operating
-/// system) in the [current locale][setlocale] into a UTF-8 string.
-///
-/// If the source encoding is not UTF-8 and the conversion output contains a
-/// nul character, the error [`ConvertError::EmbeddedNul`][crate::ConvertError::EmbeddedNul] is set and the
-/// function returns [`None`].
-/// If the source encoding is UTF-8, an embedded nul character is treated with
-/// the [`ConvertError::IllegalSequence`][crate::ConvertError::IllegalSequence] error for backward compatibility with
-/// earlier versions of this library. Use [`convert()`][crate::convert()] to produce output that
-/// may contain embedded nul characters.
-/// ## `opsysstring`
-/// a string in the
-///  encoding of the current locale. On Windows
-///  this means the system codepage.
-///
-/// # Returns
-///
-/// The converted string, or [`None`] on an error.
-///
-/// ## `bytes_read`
-/// location to store the number of bytes in the
-///  input string that were successfully converted, or [`None`].
-///  Even if the conversion was successful, this may be
-///  less than `len` if there were partial characters
-///  at the end of the input. If the error
-///  [`ConvertError::IllegalSequence`][crate::ConvertError::IllegalSequence] occurs, the value
-///  stored will be the byte offset after the last valid
-///  input sequence.
-///
-/// ## `bytes_written`
-/// the number of bytes stored in the output
-///  buffer (not including the terminating nul).
-</span><span class="attr">#[doc(alias = <span class="string">&quot;g_locale_to_utf8&quot;</span>)]
+<span class="attr">#[doc(alias = <span class="string">&quot;g_locale_to_utf8&quot;</span>)]
 </span><span class="kw">pub fn </span><a href="../../glib/fn.locale_to_utf8.html">locale_to_utf8</a>(opsysstring: <span class="kw-2">&amp;</span>[<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>]) -&gt; <span class="prelude-ty">Result</span>&lt;(<a href="gstring.rs.html#979"><span class="kw">crate</span>::GString</a>, <a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>), <a href="#13-22">CvtError</a>&gt; {
-    <span class="kw">let </span>len = <a href="#504">opsysstring</a>.len() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>;
+    <span class="kw">let </span>len = <a href="#537">opsysstring</a>.len() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>;
     <span class="kw">let </span><span class="kw-2">mut </span>bytes_read = <span class="number">0</span>;
     <span class="kw">let </span><span class="kw-2">mut </span>bytes_written = std::mem::MaybeUninit::uninit();
     <span class="kw">let </span><span class="kw-2">mut </span>error = ptr::null_mut();
     <span class="kw">let </span>ret = <span class="kw">unsafe </span>{
         ffi::g_locale_to_utf8(
-            <a href="#504">opsysstring</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
-            <a href="#505">len</a>,
-            <span class="kw-2">&amp;mut </span><a href="#506">bytes_read</a>,
-            <a href="#507">bytes_written</a>.as_mut_ptr(),
-            <span class="kw-2">&amp;mut </span><a href="#508">error</a>,
+            <a href="#537">opsysstring</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
+            <a href="#538">len</a>,
+            <span class="kw-2">&amp;mut </span><a href="#539">bytes_read</a>,
+            <a href="#540">bytes_written</a>.as_mut_ptr(),
+            <span class="kw-2">&amp;mut </span><a href="#541">error</a>,
         )
     };
     <span class="kw">if </span>error.is_null() {
         <span class="prelude-val">Ok</span>(<span class="kw">unsafe </span>{
             (
-                GString::from_glib_full_num(<a href="#509">ret</a>, <a href="#507">bytes_written</a>.assume_init()),
-                <a href="#506">bytes_read</a>,
+                GString::from_glib_full_num(<a href="#542">ret</a>, <a href="#540">bytes_written</a>.assume_init()),
+                <a href="#539">bytes_read</a>,
             )
         })
     } <span class="kw">else </span>{
-        <span class="prelude-val">Err</span>(<span class="kw">unsafe </span>{ CvtError::new(<a href="translate.rs.html#1630-1632">from_glib_full</a>(<a href="#508">error</a>), <a href="#506">bytes_read</a>) })
+        <span class="prelude-val">Err</span>(<span class="kw">unsafe </span>{ CvtError::new(<a href="translate.rs.html#1630-1632">from_glib_full</a>(<a href="#541">error</a>), <a href="#539">bytes_read</a>) })
     }
 }
 
@@ -1249,14 +1315,14 @@
         <span class="kw">let </span><span class="kw-2">mut </span>items_written = <span class="number">0</span>;
 
         <span class="kw">let </span>str_as_utf32 = ffi::g_utf8_to_ucs4_fast(
-            <a href="#533">str</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html">as_ref</a>().as_ptr().cast::&lt;<a href="https://doc.rust-lang.org/nightly/std/os/raw/type.c_char.html">c_char</a>&gt;(),
-            <a href="#533">str</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html">as_ref</a>().len() <span class="kw">as _</span>,
-            <span class="kw-2">&amp;mut </span><a href="#535">items_written</a>,
+            <a href="#566">str</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html">as_ref</a>().as_ptr().cast::&lt;<a href="https://doc.rust-lang.org/nightly/std/os/raw/type.c_char.html">c_char</a>&gt;(),
+            <a href="#566">str</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html">as_ref</a>().len() <span class="kw">as _</span>,
+            <span class="kw-2">&amp;mut </span><a href="#568">items_written</a>,
         );
 
         <span class="comment">// NOTE: We assume that u32 and char have the same layout and trust that glib won&#39;t give us
         //       invalid UTF-32 codepoints
-        </span>Slice::from_glib_full_num(<a href="#537">str_as_utf32</a>, <a href="#535">items_written</a> <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>)
+        </span>Slice::from_glib_full_num(<a href="#570">str_as_utf32</a>, <a href="#568">items_written</a> <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>)
     }
 }
 
@@ -1269,11 +1335,11 @@
 
     <span class="kw">unsafe </span>{
         <span class="kw">let </span>str_as_utf8 = ffi::g_ucs4_to_utf8(
-            <a href="#551">str</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html">as_ref</a>().as_ptr().cast::&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;(),
-            <a href="#551">str</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html">as_ref</a>().len() <span class="kw">as _</span>,
-            <span class="kw-2">&amp;mut </span><a href="#552">items_read</a>,
-            <span class="kw-2">&amp;mut </span><a href="#553">items_written</a>,
-            <span class="kw-2">&amp;mut </span><a href="#554">error</a>,
+            <a href="#584">str</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html">as_ref</a>().as_ptr().cast::&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;(),
+            <a href="#584">str</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html">as_ref</a>().len() <span class="kw">as _</span>,
+            <span class="kw-2">&amp;mut </span><a href="#585">items_read</a>,
+            <span class="kw-2">&amp;mut </span><a href="#586">items_written</a>,
+            <span class="kw-2">&amp;mut </span><a href="#587">error</a>,
         );
 
         <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.debug_assert.html">debug_assert!</a>(
@@ -1281,7 +1347,7 @@
             <span class="string">&quot;Rust `char` should always be convertible to UTF-8&quot;
         </span>);
 
-        GString::from_glib_full_num(<a href="#557">str_as_utf8</a>, <a href="#553">items_written</a> <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>)
+        GString::from_glib_full_num(<a href="#590">str_as_utf8</a>, <a href="#586">items_written</a> <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>)
     }
 }
 
@@ -1289,9 +1355,9 @@
 #[doc(alias = <span class="string">&quot;utf8_casefold&quot;</span>)]
 </span><span class="kw">pub fn </span><a href="../../glib/fn.casefold.html">casefold</a>(str: <span class="kw">impl </span>AsRef&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;) -&gt; <a href="gstring.rs.html#979">GString</a> {
     <span class="kw">unsafe </span>{
-        <span class="kw">let </span>str = ffi::g_utf8_casefold(<a href="#576">str</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html">as_ref</a>().as_ptr().cast(), <a href="#576">str</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html">as_ref</a>().len() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>);
+        <span class="kw">let </span>str = ffi::g_utf8_casefold(<a href="#609">str</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html">as_ref</a>().as_ptr().cast(), <a href="#609">str</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html">as_ref</a>().len() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>);
 
-        <a href="translate.rs.html#1630-1632">from_glib_full</a>(<a href="#578">str</a>)
+        <a href="translate.rs.html#1630-1632">from_glib_full</a>(<a href="#611">str</a>)
     }
 }
 
@@ -1300,12 +1366,12 @@
 </span><span class="kw">pub fn </span><a href="../../glib/fn.normalize.html">normalize</a>(str: <span class="kw">impl </span>AsRef&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;, mode: <a href="auto/enums.rs.html#795-806">NormalizeMode</a>) -&gt; <a href="gstring.rs.html#979">GString</a> {
     <span class="kw">unsafe </span>{
         <span class="kw">let </span>str = ffi::g_utf8_normalize(
-            <a href="#586">str</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html">as_ref</a>().as_ptr().cast(),
-            <a href="#586">str</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html">as_ref</a>().len() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>,
-            <a href="#586">mode</a>.<a href="translate.rs.html#330">into_glib</a>(),
+            <a href="#619">str</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html">as_ref</a>().as_ptr().cast(),
+            <a href="#619">str</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html">as_ref</a>().len() <span class="kw">as </span><a href="https://doc.rust-lang.org/nightly/std/primitive.isize.html">isize</a>,
+            <a href="#619">mode</a>.<a href="translate.rs.html#330">into_glib</a>(),
         );
 
-        <a href="translate.rs.html#1630-1632">from_glib_full</a>(<a href="#588">str</a>)
+        <a href="translate.rs.html#1630-1632">from_glib_full</a>(<a href="#621">str</a>)
     }
 }
 
