@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/mod.rs`."><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-cb6f1f67f1bcd037.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.73.0-nightly (eb088b8b9 2023-08-05)" data-channel="nightly" data-search-js="search-6dfdfced5eff6596.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-1596385f77d47ef2.css" data-theme-dark-css="dark-0a43001d3fc2282c.css" data-theme-ayu-css="ayu-fd19013d6ce078bf.css" ><script src="../../../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="../../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-1596385f77d47ef2.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-0a43001d3fc2282c.css"><link rel="stylesheet" href="../../../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/mod.rs`."><title>mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-cb6f1f67f1bcd037.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.73.0-nightly (f3623871c 2023-08-06)" data-channel="nightly" data-search-js="search-6dfdfced5eff6596.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-1596385f77d47ef2.css" data-theme-dark-css="dark-0a43001d3fc2282c.css" data-theme-ayu-css="ayu-fd19013d6ce078bf.css" ><script src="../../../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="../../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-1596385f77d47ef2.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-0a43001d3fc2282c.css"><link rel="stylesheet" href="../../../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -949,6 +949,11 @@
 <a href="#876" id="876">876</a>
 <a href="#877" id="877">877</a>
 <a href="#878" id="878">878</a>
+<a href="#879" id="879">879</a>
+<a href="#880" id="880">880</a>
+<a href="#881" id="881">881</a>
+<a href="#882" id="882">882</a>
+<a href="#883" id="883">883</a>
 </pre></div><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
@@ -1036,6 +1041,9 @@
 
 <span class="kw">mod </span><a href="dbus_object.rs.html#5-188">dbus_object</a>;
 <span class="kw">pub use </span><a href="dbus_object.rs.html#13-42"><span class="self">self</span>::dbus_object::DBusObject</a>;
+
+<span class="kw">mod </span><a href="dbus_object_manager.rs.html#5-310">dbus_object_manager</a>;
+<span class="kw">pub use </span><a href="dbus_object_manager.rs.html#13-63"><span class="self">self</span>::dbus_object_manager::DBusObjectManager</a>;
 
 <span class="kw">mod </span><a href="dbus_proxy.rs.html#5-1451">dbus_proxy</a>;
 <span class="kw">pub use </span><a href="dbus_proxy.rs.html#19-194"><span class="self">self</span>::dbus_proxy::DBusProxy</a>;
@@ -1483,7 +1491,7 @@
 </span><span class="kw">pub use </span><a href="enums.rs.html#5267-5286"><span class="self">self</span>::enums::UnixSocketAddressType</a>;
 <span class="kw">pub use </span><a href="enums.rs.html#5404-5416"><span class="self">self</span>::enums::ZlibCompressorFormat</a>;
 
-<span class="kw">mod </span><a href="flags.rs.html#5-3404">flags</a>;
+<span class="kw">mod </span><a href="flags.rs.html#5-3498">flags</a>;
 <span class="kw">pub use </span><a href="flags.rs.html#8-26"><span class="self">self</span>::flags::AppInfoCreateFlags</a>;
 <span class="kw">pub use </span><a href="flags.rs.html#105-169"><span class="self">self</span>::flags::ApplicationFlags</a>;
 <span class="kw">pub use </span><a href="flags.rs.html#248-274"><span class="self">self</span>::flags::AskPasswordFlags</a>;
@@ -1495,30 +1503,31 @@
 <span class="kw">pub use </span><a href="flags.rs.html#828-870"><span class="self">self</span>::flags::DBusConnectionFlags</a>;
 <span class="kw">pub use </span><a href="flags.rs.html#949-964"><span class="self">self</span>::flags::DBusInterfaceSkeletonFlags</a>;
 <span class="kw">pub use </span><a href="flags.rs.html#1043-1064"><span class="self">self</span>::flags::DBusMessageFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#1143-1179"><span class="self">self</span>::flags::DBusProxyFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#1258-1272"><span class="self">self</span>::flags::DBusSendMessageFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#1351-1373"><span class="self">self</span>::flags::DBusServerFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#1452-1475"><span class="self">self</span>::flags::DBusSignalFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#1554-1563"><span class="self">self</span>::flags::DriveStartFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#1642-1657"><span class="self">self</span>::flags::FileAttributeInfoFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#1736-1763"><span class="self">self</span>::flags::FileCopyFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#1842-1867"><span class="self">self</span>::flags::FileCreateFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#1946-1973"><span class="self">self</span>::flags::FileMeasureFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#2052-2082"><span class="self">self</span>::flags::FileMonitorFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#2161-2173"><span class="self">self</span>::flags::FileQueryInfoFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#2252-2273"><span class="self">self</span>::flags::IOStreamSpliceFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#2352-2361"><span class="self">self</span>::flags::MountMountFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#2440-2453"><span class="self">self</span>::flags::MountUnmountFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#2532-2549"><span class="self">self</span>::flags::OutputStreamSpliceFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#1143-1158"><span class="self">self</span>::flags::DBusObjectManagerClientFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#1237-1273"><span class="self">self</span>::flags::DBusProxyFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#1352-1366"><span class="self">self</span>::flags::DBusSendMessageFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#1445-1467"><span class="self">self</span>::flags::DBusServerFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#1546-1569"><span class="self">self</span>::flags::DBusSignalFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#1648-1657"><span class="self">self</span>::flags::DriveStartFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#1736-1751"><span class="self">self</span>::flags::FileAttributeInfoFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#1830-1857"><span class="self">self</span>::flags::FileCopyFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#1936-1961"><span class="self">self</span>::flags::FileCreateFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#2040-2067"><span class="self">self</span>::flags::FileMeasureFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#2146-2176"><span class="self">self</span>::flags::FileMonitorFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#2255-2267"><span class="self">self</span>::flags::FileQueryInfoFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#2346-2367"><span class="self">self</span>::flags::IOStreamSpliceFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#2446-2455"><span class="self">self</span>::flags::MountMountFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#2534-2547"><span class="self">self</span>::flags::MountUnmountFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#2626-2643"><span class="self">self</span>::flags::OutputStreamSpliceFlags</a>;
 <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
 #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
-</span><span class="kw">pub use </span><a href="flags.rs.html#2629-2645"><span class="self">self</span>::flags::ResolverNameLookupFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#2742-2751"><span class="self">self</span>::flags::ResourceLookupFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#2830-2861"><span class="self">self</span>::flags::SettingsBindFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#2940-3002"><span class="self">self</span>::flags::SubprocessFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#3081-3128"><span class="self">self</span>::flags::TlsCertificateFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#3207-3216"><span class="self">self</span>::flags::TlsDatabaseVerifyFlags</a>;
-<span class="kw">pub use </span><a href="flags.rs.html#3295-3327"><span class="self">self</span>::flags::TlsPasswordFlags</a>;
+</span><span class="kw">pub use </span><a href="flags.rs.html#2723-2739"><span class="self">self</span>::flags::ResolverNameLookupFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#2836-2845"><span class="self">self</span>::flags::ResourceLookupFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#2924-2955"><span class="self">self</span>::flags::SettingsBindFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#3034-3096"><span class="self">self</span>::flags::SubprocessFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#3175-3222"><span class="self">self</span>::flags::TlsCertificateFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#3301-3310"><span class="self">self</span>::flags::TlsDatabaseVerifyFlags</a>;
+<span class="kw">pub use </span><a href="flags.rs.html#3389-3421"><span class="self">self</span>::flags::TlsPasswordFlags</a>;
 
 <span class="kw">pub mod </span><a href="functions.rs.html#5-1298">functions</a>;
 
@@ -1718,6 +1727,7 @@
     <span class="kw">pub use </span><a href="dbus_interface.rs.html#39-86"><span class="kw">super</span>::dbus_interface::DBusInterfaceExt</a>;
     <span class="kw">pub use </span><a href="dbus_interface_skeleton.rs.html#94-416"><span class="kw">super</span>::dbus_interface_skeleton::DBusInterfaceSkeletonExt</a>;
     <span class="kw">pub use </span><a href="dbus_object.rs.html#58-180"><span class="kw">super</span>::dbus_object::DBusObjectExt</a>;
+    <span class="kw">pub use </span><a href="dbus_object_manager.rs.html#79-302"><span class="kw">super</span>::dbus_object_manager::DBusObjectManagerExt</a>;
     <span class="kw">pub use </span><a href="dbus_proxy.rs.html#578-1443"><span class="kw">super</span>::dbus_proxy::DBusProxyExt</a>;
     <span class="attr">#[cfg(feature = <span class="string">&quot;v2_72&quot;</span>)]
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_72&quot;</span>)))]
