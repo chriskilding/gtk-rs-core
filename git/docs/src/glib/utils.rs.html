@@ -453,7 +453,7 @@
 <span class="attr">#[doc(alias = <span class="string">&quot;g_file_get_contents&quot;</span>)]
 </span><span class="kw">pub fn </span><a href="../../glib/fn.file_get_contents.html">file_get_contents</a>(
     filename: <span class="kw">impl </span>AsRef&lt;<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">std::path::Path</a>&gt;,
-) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="kw">crate</span>::Slice&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;, <a href="error.rs.html#10-22"><span class="kw">crate</span>::Error</a>&gt; {
+) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="kw">crate</span>::Slice&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>&gt;, <a href="error.rs.html#10-25"><span class="kw">crate</span>::Error</a>&gt; {
     <span class="kw">unsafe </span>{
         <span class="kw">let </span><span class="kw-2">mut </span>contents = ptr::null_mut();
         <span class="kw">let </span><span class="kw-2">mut </span>length = mem::MaybeUninit::uninit();
