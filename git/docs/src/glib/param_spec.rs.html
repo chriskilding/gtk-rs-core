@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/param_spec.rs`."><title>param_spec.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-cb6f1f67f1bcd037.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.73.0-nightly (03a119b0b 2023-08-07)" data-channel="nightly" data-search-js="search-6dfdfced5eff6596.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-1596385f77d47ef2.css" data-theme-dark-css="dark-0a43001d3fc2282c.css" data-theme-ayu-css="ayu-fd19013d6ce078bf.css" ><script src="../../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-1596385f77d47ef2.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-0a43001d3fc2282c.css"><link rel="stylesheet" href="../../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/param_spec.rs`."><title>param_spec.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-cb6f1f67f1bcd037.css" id="mainThemeStyle"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.73.0-nightly (f88a8b71c 2023-08-08)" data-channel="nightly" data-search-js="search-6dfdfced5eff6596.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-8c76f75bfb6bd192.css" data-theme-light-css="light-1596385f77d47ef2.css" data-theme-dark-css="dark-0a43001d3fc2282c.css" data-theme-ayu-css="ayu-fd19013d6ce078bf.css" ><script src="../../static.files/storage-db41da1a38ea3cb8.js"></script><script defer src="../../static.files/src-script-3280b574d94e47b4.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-0795b7d26be81095.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-1596385f77d47ef2.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-0a43001d3fc2282c.css"><link rel="stylesheet" href="../../static.files/noscript-cffde32267a19fd6.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -2400,8 +2400,8 @@
     object::{<a href="object.rs.html#4063">Interface</a>, <a href="object.rs.html#4263">InterfaceRef</a>, <a href="object.rs.html#4058">IsClass</a>, <a href="object.rs.html#4290">IsInterface</a>, <a href="object.rs.html#1355">ObjectClass</a>},
     <a href="lib.rs.html#137">prelude</a>::<span class="kw-2">*</span>,
     <a href="lib.rs.html#142">translate</a>::<span class="kw-2">*</span>,
-    <a href="utils.rs.html#214-220">utils::is_canonical_pspec_name</a>,
-    <a href="object.rs.html#1351-1354">Object</a>, <a href="gobject/flags.rs.html#5-78">ParamFlags</a>, <a href="types.rs.html#22">Type</a>, <a href="value.rs.html#476-499">Value</a>,
+    <a href="utils.rs.html#127-133">utils::is_canonical_pspec_name</a>,
+    <a href="object.rs.html#1351-1354">Object</a>, <a href="gobject/flags.rs.html#5-35">ParamFlags</a>, <a href="types.rs.html#22">Type</a>, <a href="value.rs.html#476-510">Value</a>,
 };
 <span class="comment">// Can&#39;t use get_type here as this is not a boxed type but another fundamental type
 </span><a class="macro" href="wrapper.rs.html#277-445">wrapper! </a>{
@@ -2434,7 +2434,7 @@
 </span><span class="kw">unsafe impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">crate</span>::value::FromValue&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">for </span><a href="#19-28">ParamSpec</a> {
     <span class="kw">type </span>Checker = <span class="kw">crate</span>::value::GenericValueTypeOrNoneChecker&lt;<span class="self">Self</span>&gt;;
 
-    <span class="kw">unsafe fn </span>from_value(value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="value.rs.html#476-499"><span class="kw">crate</span>::Value</a>) -&gt; <span class="self">Self </span>{
+    <span class="kw">unsafe fn </span>from_value(value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="value.rs.html#476-510"><span class="kw">crate</span>::Value</a>) -&gt; <span class="self">Self </span>{
         <span class="kw">let </span>ptr = gobject_ffi::g_value_dup_param(<a href="#49">value</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>);
         <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.debug_assert.html">debug_assert!</a>(!ptr.is_null());
         <a href="translate.rs.html#1630-1632">from_glib_full</a>(<a href="#50">ptr</a> <span class="kw">as </span><span class="kw-2">*mut </span>gobject_ffi::GParamSpec)
@@ -2445,12 +2445,12 @@
 </span><span class="kw">unsafe impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">crate</span>::value::FromValue&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">for </span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="#19-28">ParamSpec</a> {
     <span class="kw">type </span>Checker = <span class="kw">crate</span>::value::GenericValueTypeOrNoneChecker&lt;<span class="self">Self</span>&gt;;
 
-    <span class="kw">unsafe fn </span>from_value(value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="value.rs.html#476-499"><span class="kw">crate</span>::Value</a>) -&gt; <span class="self">Self </span>{
+    <span class="kw">unsafe fn </span>from_value(value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="value.rs.html#476-510"><span class="kw">crate</span>::Value</a>) -&gt; <span class="self">Self </span>{
         <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.debug_assert_eq.html">debug_assert_eq!</a>(
             std::mem::size_of::&lt;<span class="self">Self</span>&gt;(),
             std::mem::size_of::&lt;<span class="kw">crate</span>::ffi::gpointer&gt;()
         );
-        <span class="kw">let </span>value = <span class="kw-2">&amp;*</span>(<a href="#60">value</a> <span class="kw">as </span><span class="kw-2">*const </span><a href="value.rs.html#476-499"><span class="kw">crate</span>::Value</a> <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">crate</span>::gobject_ffi::GValue);
+        <span class="kw">let </span>value = <span class="kw-2">&amp;*</span>(<a href="#60">value</a> <span class="kw">as </span><span class="kw-2">*const </span><a href="value.rs.html#476-510"><span class="kw">crate</span>::Value</a> <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">crate</span>::gobject_ffi::GValue);
         <span class="kw">let </span>ptr = <span class="kw-2">&amp;</span><a href="#65">value</a>.data[<span class="number">0</span>].v_pointer <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">crate</span>::ffi::gpointer
             <span class="kw">as </span><span class="kw-2">*const *const </span>gobject_ffi::GParamSpec;
         <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.debug_assert.html">debug_assert!</a>(!(<span class="kw-2">*</span>ptr).is_null());
@@ -2460,7 +2460,7 @@
 
 <span class="attr">#[doc(hidden)]
 </span><span class="kw">impl </span><a href="value.rs.html#369-379"><span class="kw">crate</span>::value::ToValue</a> <span class="kw">for </span><a href="#19-28">ParamSpec</a> {
-    <span class="kw">fn </span>to_value(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="value.rs.html#476-499"><span class="kw">crate</span>::Value</a> {
+    <span class="kw">fn </span>to_value(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="value.rs.html#476-510"><span class="kw">crate</span>::Value</a> {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>value = <span class="kw">crate</span>::Value::from_type_unchecked(ParamSpec::static_type());
             gobject_ffi::g_value_take_param(<a href="#77">value</a>.<a href="translate.rs.html#467">to_glib_none_mut</a>().<span class="number">0</span>, <a class="self" href="#75">self</a>.<a href="translate.rs.html#452-454">to_glib_full</a>());
@@ -2474,7 +2474,7 @@
 }
 
 <span class="attr">#[doc(hidden)]
-</span><span class="kw">impl </span>From&lt;<a href="#19-28">ParamSpec</a>&gt; <span class="kw">for </span><a href="value.rs.html#476-499"><span class="kw">crate</span>::Value</a> {
+</span><span class="kw">impl </span>From&lt;<a href="#19-28">ParamSpec</a>&gt; <span class="kw">for </span><a href="value.rs.html#476-510"><span class="kw">crate</span>::Value</a> {
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>from(s: <a href="#19-28">ParamSpec</a>) -&gt; <span class="self">Self </span>{
         <span class="kw">unsafe </span>{
@@ -2487,7 +2487,7 @@
 
 <span class="attr">#[doc(hidden)]
 </span><span class="kw">impl </span><a href="value.rs.html#397-402"><span class="kw">crate</span>::value::ToValueOptional</a> <span class="kw">for </span><a href="#19-28">ParamSpec</a> {
-    <span class="kw">fn </span>to_value_optional(s: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="self">Self</span>&gt;) -&gt; <a href="value.rs.html#476-499"><span class="kw">crate</span>::Value</a> {
+    <span class="kw">fn </span>to_value_optional(s: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="self">Self</span>&gt;) -&gt; <a href="value.rs.html#476-510"><span class="kw">crate</span>::Value</a> {
         <span class="kw">let </span><span class="kw-2">mut </span>value = <span class="kw">crate</span>::Value::for_value_type::&lt;<span class="self">Self</span>&gt;();
         <span class="kw">unsafe </span>{
             gobject_ffi::g_value_take_param(<a href="#103">value</a>.<a href="translate.rs.html#467">to_glib_none_mut</a>().<span class="number">0</span>, <a href="#102">s</a>.<a href="translate.rs.html#452-454">to_glib_full</a>());
@@ -2556,7 +2556,7 @@
     #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_74&quot;</span>)))]
     #[doc(alias = <span class="string">&quot;g_param_value_is_valid&quot;</span>)]
     #[inline]
-    </span><span class="kw">pub fn </span>value_is_valid(<span class="kw-2">&amp;</span><span class="self">self</span>, value: <span class="kw-2">&amp;</span><a href="value.rs.html#476-499">Value</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
+    </span><span class="kw">pub fn </span>value_is_valid(<span class="kw-2">&amp;</span><span class="self">self</span>, value: <span class="kw-2">&amp;</span><a href="value.rs.html#476-510">Value</a>) -&gt; <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> {
         <span class="kw">unsafe </span>{
             <a href="translate.rs.html#1413-1415">from_glib</a>(gobject_ffi::g_param_value_is_valid(
                 <a class="self" href="#171">self</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
@@ -2573,7 +2573,7 @@
 
     <span class="attr">#[doc(alias = <span class="string">&quot;get_flags&quot;</span>)]
     #[inline]
-    </span><span class="kw">pub fn </span>flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="gobject/flags.rs.html#5-78">ParamFlags</a> {
+    </span><span class="kw">pub fn </span>flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="gobject/flags.rs.html#5-35">ParamFlags</a> {
         <span class="kw">unsafe </span>{ <a href="translate.rs.html#1413-1415">from_glib</a>((<span class="kw-2">*</span>(&lt;<span class="self">Self </span><span class="kw">as </span>ToGlibPtr&lt;<span class="kw-2">*const </span><span class="kw">_</span>&gt;&gt;::to_glib_none(<a class="self" href="#188">self</a>).<span class="number">0</span>)).flags) }
     }
 
@@ -2594,10 +2594,10 @@
     <span class="attr">#[doc(alias = <span class="string">&quot;g_param_spec_get_default_value&quot;</span>)]
     #[doc(alias = <span class="string">&quot;get_default_value&quot;</span>)]
     #[inline]
-    </span><span class="kw">pub fn </span>default_value(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><a href="value.rs.html#476-499">Value</a> {
+    </span><span class="kw">pub fn </span>default_value(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><a href="value.rs.html#476-510">Value</a> {
         <span class="kw">unsafe </span>{
             <span class="kw-2">&amp;*</span>(gobject_ffi::g_param_spec_get_default_value(<a class="self" href="#209">self</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>)
-                <span class="kw">as </span><span class="kw-2">*const </span><a href="value.rs.html#476-499"><span class="kw">crate</span>::Value</a>)
+                <span class="kw">as </span><span class="kw-2">*const </span><a href="value.rs.html#476-510"><span class="kw">crate</span>::Value</a>)
         }
     }
 
@@ -3013,9 +3013,9 @@
     <span class="doccomment">/// Implementation detail.
     </span><span class="kw">fn </span>set_blurb(<span class="kw-2">&amp;mut </span><span class="self">self</span>, blurb: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;);
     <span class="doccomment">/// Implementation detail.
-    </span><span class="kw">fn </span>set_flags(<span class="kw-2">&amp;mut </span><span class="self">self</span>, flags: <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a>);
+    </span><span class="kw">fn </span>set_flags(<span class="kw-2">&amp;mut </span><span class="self">self</span>, flags: <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a>);
     <span class="doccomment">/// Implementation detail.
-    </span><span class="kw">fn </span>current_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a>;
+    </span><span class="kw">fn </span>current_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a>;
 
     <span class="doccomment">/// By default, the nickname of its redirect target will be used if it has one.
     /// Otherwise, `self.name` will be used.
@@ -3031,7 +3031,7 @@
     </span>}
 
     <span class="doccomment">/// Default: `glib::ParamFlags::READWRITE`
-    </span><span class="kw">fn </span>flags(<span class="kw-2">mut </span><span class="self">self</span>, flags: <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a>) -&gt; <span class="self">Self </span>{
+    </span><span class="kw">fn </span>flags(<span class="kw-2">mut </span><span class="self">self</span>, flags: <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a>) -&gt; <span class="self">Self </span>{
         <a class="self" href="#646">self</a>.<a href="#628">set_flags</a>(<a href="#646">flags</a>);
         <span class="self"><a href="#646">self</a>
     </span>}
@@ -3226,7 +3226,7 @@
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         default_value: <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <a href="#795-800">assert_param_name</a>(<a href="#837">name</a>);
         <span class="kw">unsafe </span>{ <span class="self">Self</span>::new_unchecked(<a href="#837">name</a>, <a href="#838">nick</a>, <a href="#839">blurb</a>, <a href="#840">default_value</a>, <a href="#841">flags</a>) }
@@ -3237,7 +3237,7 @@
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         default_value: <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <span class="kw">unsafe </span>{
             <a href="translate.rs.html#1621-1623">from_glib_none</a>(gobject_ffi::g_param_spec_boolean(
@@ -3336,7 +3336,7 @@
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         default_value: <a href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <a href="#795-800">assert_param_name</a>(<a href="#947">name</a>);
         <span class="kw">unsafe </span>{ <span class="self">Self</span>::new_unchecked(<a href="#947">name</a>, <a href="#948">nick</a>, <a href="#949">blurb</a>, <a href="#950">default_value</a>, <a href="#951">flags</a>) }
@@ -3347,7 +3347,7 @@
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         default_value: <a href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <span class="kw">unsafe </span>{
             <a href="translate.rs.html#1621-1623">from_glib_none</a>(gobject_ffi::g_param_spec_unichar(
@@ -3381,7 +3381,7 @@
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         enum_type: <a href="types.rs.html#22"><span class="kw">crate</span>::Type</a>,
         default_value: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <a href="#795-800">assert_param_name</a>(<a href="#991">name</a>);
         <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.assert.html">assert!</a>(enum_type.is_a(Type::ENUM));
@@ -3394,7 +3394,7 @@
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         enum_type: <a href="types.rs.html#22"><span class="kw">crate</span>::Type</a>,
         default_value: <a href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <span class="kw">unsafe </span>{
             <a href="translate.rs.html#1621-1623">from_glib_none</a>(gobject_ffi::g_param_spec_enum(
@@ -3462,7 +3462,7 @@
     name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
     nick: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
     blurb: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
-    flags: <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a>,
+    flags: <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a>,
     default_value: T,
 }
 
@@ -3509,10 +3509,10 @@
     <span class="kw">fn </span>set_blurb(<span class="kw-2">&amp;mut </span><span class="self">self</span>, blurb: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;) {
         <a class="self" href="#1121">self</a>.blurb = <a href="#1121">blurb</a>;
     }
-    <span class="kw">fn </span>set_flags(<span class="kw-2">&amp;mut </span><span class="self">self</span>, flags: <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a>) {
+    <span class="kw">fn </span>set_flags(<span class="kw-2">&amp;mut </span><span class="self">self</span>, flags: <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a>) {
         <a class="self" href="#1124">self</a>.flags = <a href="#1124">flags</a>;
     }
-    <span class="kw">fn </span>current_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a> {
+    <span class="kw">fn </span>current_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a> {
         <a class="self" href="#1127">self</a>.flags
     }
 }
@@ -3529,7 +3529,7 @@
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         flags_type: <a href="types.rs.html#22"><span class="kw">crate</span>::Type</a>,
         default_value: <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <a href="#795-800">assert_param_name</a>(<a href="#1139">name</a>);
         <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.assert.html">assert!</a>(flags_type.is_a(Type::FLAGS));
@@ -3542,7 +3542,7 @@
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         flags_type: <a href="types.rs.html#22"><span class="kw">crate</span>::Type</a>,
         default_value: <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <span class="kw">unsafe </span>{
             <a href="translate.rs.html#1621-1623">from_glib_none</a>(gobject_ffi::g_param_spec_flags(
@@ -3603,7 +3603,7 @@
     name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
     nick: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
     blurb: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
-    flags: <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a>,
+    flags: <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a>,
     default_value: T,
 }
 
@@ -3653,10 +3653,10 @@
     <span class="kw">fn </span>set_blurb(<span class="kw-2">&amp;mut </span><span class="self">self</span>, blurb: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;) {
         <a class="self" href="#1265">self</a>.blurb = <a href="#1265">blurb</a>;
     }
-    <span class="kw">fn </span>set_flags(<span class="kw-2">&amp;mut </span><span class="self">self</span>, flags: <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a>) {
+    <span class="kw">fn </span>set_flags(<span class="kw-2">&amp;mut </span><span class="self">self</span>, flags: <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a>) {
         <a class="self" href="#1268">self</a>.flags = <a href="#1268">flags</a>;
     }
-    <span class="kw">fn </span>current_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a> {
+    <span class="kw">fn </span>current_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a> {
         <a class="self" href="#1271">self</a>.flags
     }
 }
@@ -3709,7 +3709,7 @@
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         default_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <a href="#795-800">assert_param_name</a>(<a href="#1320">name</a>);
         <span class="kw">unsafe </span>{ <span class="self">Self</span>::new_unchecked(<a href="#1320">name</a>, <a href="#1321">nick</a>, <a href="#1322">blurb</a>, <a href="#1323">default_value</a>, <a href="#1324">flags</a>) }
@@ -3720,7 +3720,7 @@
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         default_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <span class="kw">let </span>default_value = <a href="#1334">default_value</a>.<a href="translate.rs.html#437">to_glib_none</a>();
         <span class="kw">unsafe </span>{
@@ -3744,7 +3744,7 @@
     name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
     nick: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
     blurb: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
-    flags: <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a>,
+    flags: <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a>,
     default_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
 }
 
@@ -3787,10 +3787,10 @@
     <span class="kw">fn </span>set_blurb(<span class="kw-2">&amp;mut </span><span class="self">self</span>, blurb: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;) {
         <a class="self" href="#1399">self</a>.blurb = <a href="#1399">blurb</a>;
     }
-    <span class="kw">fn </span>set_flags(<span class="kw-2">&amp;mut </span><span class="self">self</span>, flags: <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a>) {
+    <span class="kw">fn </span>set_flags(<span class="kw-2">&amp;mut </span><span class="self">self</span>, flags: <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a>) {
         <a class="self" href="#1402">self</a>.flags = <a href="#1402">flags</a>;
     }
-    <span class="kw">fn </span>current_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a> {
+    <span class="kw">fn </span>current_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a> {
         <a class="self" href="#1405">self</a>.flags
     }
 }
@@ -3806,7 +3806,7 @@
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         param_type: <a href="types.rs.html#22"><span class="kw">crate</span>::Type</a>,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <a href="#795-800">assert_param_name</a>(<a href="#1417">name</a>);
         <span class="kw">unsafe </span>{ <span class="self">Self</span>::new_unchecked(<a href="#1417">name</a>, <a href="#1418">nick</a>, <a href="#1419">blurb</a>, <a href="#1420">param_type</a>, <a href="#1421">flags</a>) }
@@ -3817,7 +3817,7 @@
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         param_type: <a href="types.rs.html#22"><span class="kw">crate</span>::Type</a>,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.assert.html">assert!</a>(param_type.is_a(<span class="kw">crate</span>::Type::PARAM_SPEC));
         <span class="kw">unsafe </span>{
@@ -3851,7 +3851,7 @@
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         boxed_type: <a href="types.rs.html#22"><span class="kw">crate</span>::Type</a>,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <a href="#795-800">assert_param_name</a>(<a href="#1462">name</a>);
         <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.assert.html">assert!</a>(boxed_type.is_a(Type::BOXED));
@@ -3863,7 +3863,7 @@
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         boxed_type: <a href="types.rs.html#22"><span class="kw">crate</span>::Type</a>,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <span class="kw">unsafe </span>{
             <a href="translate.rs.html#1621-1623">from_glib_none</a>(gobject_ffi::g_param_spec_boxed(
@@ -3886,7 +3886,7 @@
     name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
     nick: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
     blurb: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
-    flags: <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a>,
+    flags: <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a>,
     phantom: std::marker::PhantomData&lt;T&gt;,
 }
 
@@ -3924,10 +3924,10 @@
     <span class="kw">fn </span>set_blurb(<span class="kw-2">&amp;mut </span><span class="self">self</span>, blurb: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;) {
         <a class="self" href="#1536">self</a>.blurb = <a href="#1536">blurb</a>;
     }
-    <span class="kw">fn </span>set_flags(<span class="kw-2">&amp;mut </span><span class="self">self</span>, flags: <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a>) {
+    <span class="kw">fn </span>set_flags(<span class="kw-2">&amp;mut </span><span class="self">self</span>, flags: <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a>) {
         <a class="self" href="#1539">self</a>.flags = <a href="#1539">flags</a>;
     }
-    <span class="kw">fn </span>current_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a> {
+    <span class="kw">fn </span>current_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a> {
         <a class="self" href="#1542">self</a>.flags
     }
 }
@@ -3942,7 +3942,7 @@
         name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <a href="#795-800">assert_param_name</a>(<a href="#1554">name</a>);
         <span class="kw">unsafe </span>{ <span class="self">Self</span>::new_unchecked(<a href="#1554">name</a>, <a href="#1555">nick</a>, <a href="#1556">blurb</a>, <a href="#1557">flags</a>) }
@@ -3952,7 +3952,7 @@
         name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <span class="kw">unsafe </span>{
             <a href="translate.rs.html#1621-1623">from_glib_none</a>(gobject_ffi::g_param_spec_pointer(
@@ -3978,7 +3978,7 @@
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         element_spec: <span class="prelude-ty">Option</span>&lt;<span class="kw">impl </span>AsRef&lt;<a href="#19-28">ParamSpec</a>&gt;&gt;,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <a href="#795-800">assert_param_name</a>(<a href="#1589">name</a>);
         <span class="kw">unsafe </span>{ <span class="self">Self</span>::new_unchecked(<a href="#1589">name</a>, <a href="#1590">nick</a>, <a href="#1591">blurb</a>, <a href="#1592">element_spec</a>, <a href="#1593">flags</a>) }
@@ -3989,7 +3989,7 @@
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         element_spec: <span class="prelude-ty">Option</span>&lt;<span class="kw">impl </span>AsRef&lt;<a href="#19-28">ParamSpec</a>&gt;&gt;,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <span class="kw">unsafe </span>{
             <a href="translate.rs.html#1621-1623">from_glib_none</a>(gobject_ffi::g_param_spec_value_array(
@@ -4039,7 +4039,7 @@
     name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
     nick: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
     blurb: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
-    flags: <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a>,
+    flags: <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a>,
     element_spec: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="#19-28">ParamSpec</a>&gt;,
 }
 
@@ -4082,10 +4082,10 @@
     <span class="kw">fn </span>set_blurb(<span class="kw-2">&amp;mut </span><span class="self">self</span>, blurb: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;) {
         <a class="self" href="#1694">self</a>.blurb = <a href="#1694">blurb</a>;
     }
-    <span class="kw">fn </span>set_flags(<span class="kw-2">&amp;mut </span><span class="self">self</span>, flags: <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a>) {
+    <span class="kw">fn </span>set_flags(<span class="kw-2">&amp;mut </span><span class="self">self</span>, flags: <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a>) {
         <a class="self" href="#1697">self</a>.flags = <a href="#1697">flags</a>;
     }
-    <span class="kw">fn </span>current_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a> {
+    <span class="kw">fn </span>current_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a> {
         <a class="self" href="#1700">self</a>.flags
     }
 }
@@ -4101,7 +4101,7 @@
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         object_type: <a href="types.rs.html#22"><span class="kw">crate</span>::Type</a>,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <a href="#795-800">assert_param_name</a>(<a href="#1712">name</a>);
         <a class="macro" href="https://doc.rust-lang.org/nightly/core/macro.assert.html">assert!</a>(object_type.is_a(Type::OBJECT));
@@ -4114,7 +4114,7 @@
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         object_type: <a href="types.rs.html#22"><span class="kw">crate</span>::Type</a>,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <span class="kw">unsafe </span>{
             <a href="translate.rs.html#1621-1623">from_glib_none</a>(gobject_ffi::g_param_spec_object(
@@ -4137,7 +4137,7 @@
     name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
     nick: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
     blurb: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
-    flags: <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a>,
+    flags: <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a>,
     phantom: std::marker::PhantomData&lt;T&gt;,
 }
 
@@ -4175,10 +4175,10 @@
     <span class="kw">fn </span>set_blurb(<span class="kw-2">&amp;mut </span><span class="self">self</span>, blurb: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;) {
         <a class="self" href="#1787">self</a>.blurb = <a href="#1787">blurb</a>;
     }
-    <span class="kw">fn </span>set_flags(<span class="kw-2">&amp;mut </span><span class="self">self</span>, flags: <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a>) {
+    <span class="kw">fn </span>set_flags(<span class="kw-2">&amp;mut </span><span class="self">self</span>, flags: <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a>) {
         <a class="self" href="#1790">self</a>.flags = <a href="#1790">flags</a>;
     }
-    <span class="kw">fn </span>current_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a> {
+    <span class="kw">fn </span>current_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a> {
         <a class="self" href="#1793">self</a>.flags
     }
 }
@@ -4299,7 +4299,7 @@
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         is_a_type: <a href="types.rs.html#22"><span class="kw">crate</span>::Type</a>,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <a href="#795-800">assert_param_name</a>(<a href="#1910">name</a>);
         <span class="kw">unsafe </span>{ <span class="self">Self</span>::new_unchecked(<a href="#1910">name</a>, <a href="#1911">nick</a>, <a href="#1912">blurb</a>, <a href="#1913">is_a_type</a>, <a href="#1914">flags</a>) }
@@ -4310,7 +4310,7 @@
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         is_a_type: <a href="types.rs.html#22"><span class="kw">crate</span>::Type</a>,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <span class="kw">unsafe </span>{
             <a href="translate.rs.html#1621-1623">from_glib_none</a>(gobject_ffi::g_param_spec_gtype(
@@ -4336,7 +4336,7 @@
 <a class="macro" href="#529-542">define_param_spec_default!</a>(
     ParamSpecVariant,
     gobject_ffi::GParamSpecVariant,
-    <span class="prelude-ty">Option</span>&lt;<a href="variant.rs.html#117-129"><span class="kw">crate</span>::Variant</a>&gt;,
+    <span class="prelude-ty">Option</span>&lt;<a href="variant.rs.html#117-376"><span class="kw">crate</span>::Variant</a>&gt;,
     |x: <span class="kw-2">*mut </span>ffi::GVariant| from_glib_none(x)
 );
 
@@ -4349,8 +4349,8 @@
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         type_: <span class="kw-2">&amp;</span><a href="variant_type.rs.html#490-492"><span class="kw">crate</span>::VariantTy</a>,
-        default_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="variant.rs.html#117-129"><span class="kw">crate</span>::Variant</a>&gt;,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        default_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="variant.rs.html#117-376"><span class="kw">crate</span>::Variant</a>&gt;,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <a href="#795-800">assert_param_name</a>(<a href="#1960">name</a>);
         <span class="kw">unsafe </span>{ <span class="self">Self</span>::new_unchecked(<a href="#1960">name</a>, <a href="#1961">nick</a>, <a href="#1962">blurb</a>, <a href="#1963">type_</a>, <a href="#1964">default_value</a>, <a href="#1965">flags</a>) }
@@ -4361,8 +4361,8 @@
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         type_: <span class="kw-2">&amp;</span><a href="variant_type.rs.html#490-492"><span class="kw">crate</span>::VariantTy</a>,
-        default_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="variant.rs.html#117-129"><span class="kw">crate</span>::Variant</a>&gt;,
-        flags: <a href="gobject/flags.rs.html#5-78">ParamFlags</a>,
+        default_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="variant.rs.html#117-376"><span class="kw">crate</span>::Variant</a>&gt;,
+        flags: <a href="gobject/flags.rs.html#5-35">ParamFlags</a>,
     ) -&gt; <a href="#19-28">ParamSpec</a> {
         <span class="kw">unsafe </span>{
             <a href="translate.rs.html#1621-1623">from_glib_none</a>(gobject_ffi::g_param_spec_variant(
@@ -4400,9 +4400,9 @@
     name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
     nick: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
     blurb: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
-    flags: <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a>,
+    flags: <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a>,
     type_: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="variant_type.rs.html#490-492"><span class="kw">crate</span>::VariantTy</a>,
-    default_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="variant.rs.html#117-129"><span class="kw">crate</span>::Variant</a>&gt;,
+    default_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="variant.rs.html#117-376"><span class="kw">crate</span>::Variant</a>&gt;,
 }
 
 <span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; ParamSpecVariantBuilder&lt;<span class="lifetime">&#39;a</span>&gt; {
@@ -4419,7 +4419,7 @@
     }
 
     <span class="attr">#[doc = <span class="string">&quot;Default: None`&quot;</span>]
-    </span><span class="kw">pub fn </span>default_value(<span class="kw-2">mut </span><span class="self">self</span>, value: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="variant.rs.html#117-129"><span class="kw">crate</span>::Variant</a>&gt;&gt;) -&gt; <span class="self">Self </span>{
+    </span><span class="kw">pub fn </span>default_value(<span class="kw-2">mut </span><span class="self">self</span>, value: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="variant.rs.html#117-376"><span class="kw">crate</span>::Variant</a>&gt;&gt;) -&gt; <span class="self">Self </span>{
         <a class="self" href="#2034">self</a>.default_value = <a href="#2034">value</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html">into</a>();
         <span class="self"><a href="#2034">self</a>
     </span>}
@@ -4446,10 +4446,10 @@
     <span class="kw">fn </span>set_blurb(<span class="kw-2">&amp;mut </span><span class="self">self</span>, blurb: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;) {
         <a class="self" href="#2058">self</a>.blurb = <a href="#2058">blurb</a>;
     }
-    <span class="kw">fn </span>set_flags(<span class="kw-2">&amp;mut </span><span class="self">self</span>, flags: <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a>) {
+    <span class="kw">fn </span>set_flags(<span class="kw-2">&amp;mut </span><span class="self">self</span>, flags: <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a>) {
         <a class="self" href="#2061">self</a>.flags = <a href="#2061">flags</a>;
     }
-    <span class="kw">fn </span>current_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="gobject/flags.rs.html#5-78"><span class="kw">crate</span>::ParamFlags</a> {
+    <span class="kw">fn </span>current_flags(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="gobject/flags.rs.html#5-35"><span class="kw">crate</span>::ParamFlags</a> {
         <a class="self" href="#2064">self</a>.flags
     }
 }
@@ -4594,7 +4594,7 @@
 <a class="macro" href="#2180-2192">has_simple_spec!</a>(<a href="https://doc.rust-lang.org/nightly/core/num/nonzero/struct.NonZeroU8.html">NonZeroU8</a>, <a href="#812-819">ParamSpecUChar</a>, <a href="#821">ParamSpecUCharBuilder</a>);
 <a class="macro" href="#2180-2192">has_simple_spec!</a>(<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, <a href="#823">ParamSpecBoolean</a>, <a href="#866-871">ParamSpecBooleanBuilder</a>);
 
-<span class="kw">impl </span><a href="#2069-2077">HasParamSpec</a> <span class="kw">for </span><a href="variant.rs.html#117-129"><span class="kw">crate</span>::Variant</a> {
+<span class="kw">impl </span><a href="#2069-2077">HasParamSpec</a> <span class="kw">for </span><a href="variant.rs.html#117-376"><span class="kw">crate</span>::Variant</a> {
     <span class="kw">type </span>ParamSpec = <a href="#1946">ParamSpecVariant</a>;
     <span class="kw">type </span>SetValue = <span class="self">Self</span>;
     <span class="kw">type </span>BuilderFn =
