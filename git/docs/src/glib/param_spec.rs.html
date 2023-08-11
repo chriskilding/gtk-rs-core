@@ -3550,7 +3550,7 @@
 
     <span class="attr">#[doc(alias = <span class="string">&quot;get_enum_class&quot;</span>)]
     #[inline]
-    </span><span class="kw">pub fn </span>enum_class(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="enums.rs.html#55"><span class="kw">crate</span>::EnumClass</a> {
+    </span><span class="kw">pub fn </span>enum_class(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="enums.rs.html#62"><span class="kw">crate</span>::EnumClass</a> {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>ptr = ToGlibPtr::&lt;<span class="kw-2">*const </span>gobject_ffi::GParamSpecEnum&gt;::to_glib_none(<a class="self" href="#1095">self</a>).<span class="number">0</span>;
 
@@ -3698,7 +3698,7 @@
 
     <span class="attr">#[doc(alias = <span class="string">&quot;get_flags_class&quot;</span>)]
     #[inline]
-    </span><span class="kw">pub fn </span>flags_class(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="enums.rs.html#336"><span class="kw">crate</span>::FlagsClass</a> {
+    </span><span class="kw">pub fn </span>flags_class(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <a href="enums.rs.html#343"><span class="kw">crate</span>::FlagsClass</a> {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>ptr = ToGlibPtr::&lt;<span class="kw-2">*const </span>gobject_ffi::GParamSpecFlags&gt;::to_glib_none(<a class="self" href="#1243">self</a>).<span class="number">0</span>;
 
@@ -4476,7 +4476,7 @@
 <a class="macro" href="#599-612">define_param_spec_default!</a>(
     ParamSpecVariant,
     gobject_ffi::GParamSpecVariant,
-    <span class="prelude-ty">Option</span>&lt;<a href="variant.rs.html#117-129"><span class="kw">crate</span>::Variant</a>&gt;,
+    <span class="prelude-ty">Option</span>&lt;<a href="variant.rs.html#117-376"><span class="kw">crate</span>::Variant</a>&gt;,
     |x: <span class="kw-2">*mut </span>ffi::GVariant| from_glib_none(x)
 );
 
@@ -4488,8 +4488,8 @@
         name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
-        type_: <span class="kw-2">&amp;</span><a href="variant_type.rs.html#329-331"><span class="kw">crate</span>::VariantTy</a>,
-        default_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="variant.rs.html#117-129"><span class="kw">crate</span>::Variant</a>&gt;,
+        type_: <span class="kw-2">&amp;</span><a href="variant_type.rs.html#490-492"><span class="kw">crate</span>::VariantTy</a>,
+        default_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="variant.rs.html#117-376"><span class="kw">crate</span>::Variant</a>&gt;,
         flags: <a href="gobject/flags.rs.html#5-54">ParamFlags</a>,
     ) -&gt; <a href="#19-43">ParamSpec</a> {
         <a href="#865-870">assert_param_name</a>(<a href="#2030">name</a>);
@@ -4500,8 +4500,8 @@
         name: <span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>,
         nick: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
         blurb: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;&gt;,
-        type_: <span class="kw-2">&amp;</span><a href="variant_type.rs.html#329-331"><span class="kw">crate</span>::VariantTy</a>,
-        default_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="variant.rs.html#117-129"><span class="kw">crate</span>::Variant</a>&gt;,
+        type_: <span class="kw-2">&amp;</span><a href="variant_type.rs.html#490-492"><span class="kw">crate</span>::VariantTy</a>,
+        default_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="variant.rs.html#117-376"><span class="kw">crate</span>::Variant</a>&gt;,
         flags: <a href="gobject/flags.rs.html#5-54">ParamFlags</a>,
     ) -&gt; <a href="#19-43">ParamSpec</a> {
         <span class="kw">unsafe </span>{
@@ -4518,7 +4518,7 @@
 
     <span class="attr">#[doc(alias = <span class="string">&quot;get_type&quot;</span>)]
     #[inline]
-    </span><span class="kw">pub fn </span>type_(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="variant_type.rs.html#329-331"><span class="kw">crate</span>::VariantTy</a>&gt; {
+    </span><span class="kw">pub fn </span>type_(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><a href="variant_type.rs.html#490-492"><span class="kw">crate</span>::VariantTy</a>&gt; {
         <span class="kw">unsafe </span>{
             <span class="kw">let </span>ptr = ToGlibPtr::&lt;<span class="kw-2">*const </span>gobject_ffi::GParamSpecVariant&gt;::to_glib_none(<a class="self" href="#2063">self</a>).<span class="number">0</span>;
 
@@ -4530,7 +4530,7 @@
         }
     }
 
-    <span class="kw">pub fn </span>builder&lt;<span class="lifetime">&#39;a</span>&gt;(name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, type_: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="variant_type.rs.html#329-331"><span class="kw">crate</span>::VariantTy</a>) -&gt; ParamSpecVariantBuilder&lt;<span class="lifetime">&#39;a</span>&gt; {
+    <span class="kw">pub fn </span>builder&lt;<span class="lifetime">&#39;a</span>&gt;(name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, type_: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="variant_type.rs.html#490-492"><span class="kw">crate</span>::VariantTy</a>) -&gt; ParamSpecVariantBuilder&lt;<span class="lifetime">&#39;a</span>&gt; {
         ParamSpecVariantBuilder::new(<a href="#2075">name</a>, <a href="#2075">type_</a>)
     }
 }
@@ -4541,12 +4541,12 @@
     nick: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
     blurb: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;,
     flags: <a href="gobject/flags.rs.html#5-54"><span class="kw">crate</span>::ParamFlags</a>,
-    type_: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="variant_type.rs.html#329-331"><span class="kw">crate</span>::VariantTy</a>,
-    default_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="variant.rs.html#117-129"><span class="kw">crate</span>::Variant</a>&gt;,
+    type_: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="variant_type.rs.html#490-492"><span class="kw">crate</span>::VariantTy</a>,
+    default_value: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="variant.rs.html#117-376"><span class="kw">crate</span>::Variant</a>&gt;,
 }
 
 <span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; ParamSpecVariantBuilder&lt;<span class="lifetime">&#39;a</span>&gt; {
-    <span class="kw">fn </span>new(name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, type_: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="variant_type.rs.html#329-331"><span class="kw">crate</span>::VariantTy</a>) -&gt; <span class="self">Self </span>{
+    <span class="kw">fn </span>new(name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, type_: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="variant_type.rs.html#490-492"><span class="kw">crate</span>::VariantTy</a>) -&gt; <span class="self">Self </span>{
         <a href="#865-870">assert_param_name</a>(<a href="#2091">name</a>);
         <span class="self">Self </span>{
             <a href="#2091">name</a>,
@@ -4559,7 +4559,7 @@
     }
 
     <span class="attr">#[doc = <span class="string">&quot;Default: None`&quot;</span>]
-    </span><span class="kw">pub fn </span>default_value(<span class="kw-2">mut </span><span class="self">self</span>, value: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="variant.rs.html#117-129"><span class="kw">crate</span>::Variant</a>&gt;&gt;) -&gt; <span class="self">Self </span>{
+    </span><span class="kw">pub fn </span>default_value(<span class="kw-2">mut </span><span class="self">self</span>, value: <span class="kw">impl </span>Into&lt;<span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><a href="variant.rs.html#117-376"><span class="kw">crate</span>::Variant</a>&gt;&gt;) -&gt; <span class="self">Self </span>{
         <a class="self" href="#2104">self</a>.default_value = <a href="#2104">value</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html">into</a>();
         <span class="self"><a href="#2104">self</a>
     </span>}
@@ -4734,11 +4734,11 @@
 <a class="macro" href="#2250-2262">has_simple_spec!</a>(<a href="https://doc.rust-lang.org/nightly/core/num/nonzero/struct.NonZeroU8.html">NonZeroU8</a>, <a href="#882-889">ParamSpecUChar</a>, <a href="#891">ParamSpecUCharBuilder</a>);
 <a class="macro" href="#2250-2262">has_simple_spec!</a>(<a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, <a href="#893">ParamSpecBoolean</a>, <a href="#936-941">ParamSpecBooleanBuilder</a>);
 
-<span class="kw">impl </span><a href="#2139-2147">HasParamSpec</a> <span class="kw">for </span><a href="variant.rs.html#117-129"><span class="kw">crate</span>::Variant</a> {
+<span class="kw">impl </span><a href="#2139-2147">HasParamSpec</a> <span class="kw">for </span><a href="variant.rs.html#117-376"><span class="kw">crate</span>::Variant</a> {
     <span class="kw">type </span>ParamSpec = <a href="#2016">ParamSpecVariant</a>;
     <span class="kw">type </span>SetValue = <span class="self">Self</span>;
     <span class="kw">type </span>BuilderFn =
-        <span class="kw">fn</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, ty: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span><a href="variant_type.rs.html#329-331"><span class="kw">crate</span>::VariantTy</a>) -&gt; ParamSpecVariantBuilder&lt;<span class="lifetime">&#39;static</span>&gt;;
+        <span class="kw">fn</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, ty: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span><a href="variant_type.rs.html#490-492"><span class="kw">crate</span>::VariantTy</a>) -&gt; ParamSpecVariantBuilder&lt;<span class="lifetime">&#39;static</span>&gt;;
 
     <span class="kw">fn </span>param_spec_builder() -&gt; <span class="self">Self</span>::BuilderFn {
         <span class="self">Self</span>::ParamSpec::builder

@@ -3573,10 +3573,10 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-</span><span class="kw">use </span>glib::{<a href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags::bitflags</a>, <a href="../../../glib/prelude/index.html">prelude</a>::<span class="kw-2">*</span>, <a href="../../../glib/translate/index.html">translate</a>::<span class="kw-2">*</span>};
+</span><span class="kw">use </span>glib::{bitflags::bitflags, <a href="../../../glib/prelude/index.html">prelude</a>::<span class="kw-2">*</span>, <a href="../../../glib/translate/index.html">translate</a>::<span class="kw-2">*</span>};
 <span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/alloc/fmt/index.html">std::fmt</a>;
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags used when creating a [`AppInfo`][crate::AppInfo].
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GAppInfoCreateFlags&quot;</span>)]
@@ -3673,7 +3673,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags used to define the behaviour of a [`Application`][crate::Application].
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GApplicationFlags&quot;</span>)]
@@ -3816,7 +3816,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// [`AskPasswordFlags`][crate::AskPasswordFlags] are used to request specific information from the
     /// user, or to notify the user of their choices in an authentication
     /// situation.
@@ -3921,7 +3921,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags used in `g_bus_own_name()`.
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GBusNameOwnerFlags&quot;</span>)]
@@ -4020,7 +4020,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags used in `g_bus_watch_name()`.
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GBusNameWatcherFlags&quot;</span>)]
@@ -4113,7 +4113,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags used when calling a [`ConverterExtManual::convert()`][crate::prelude::ConverterExtManual::convert()].
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GConverterFlags&quot;</span>)]
@@ -4207,7 +4207,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags used in [`DBusConnection::call()`][crate::DBusConnection::call()] and similar APIs.
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GDBusCallFlags&quot;</span>)]
@@ -4304,7 +4304,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Capabilities negotiated with the remote peer.
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GDBusCapabilityFlags&quot;</span>)]
@@ -4396,7 +4396,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags used when creating a new [`DBusConnection`][crate::DBusConnection].
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GDBusConnectionFlags&quot;</span>)]
@@ -4517,7 +4517,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags describing the behavior of a [`DBusInterfaceSkeleton`][crate::DBusInterfaceSkeleton] instance.
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GDBusInterfaceSkeletonFlags&quot;</span>)]
@@ -4611,7 +4611,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Message flags used in [`DBusMessage`][crate::DBusMessage].
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GDBusMessageFlags&quot;</span>)]
@@ -4711,7 +4711,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags used when constructing a `GDBusObjectManagerClient`.
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GDBusObjectManagerClientFlags&quot;</span>)]
@@ -4805,7 +4805,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags used when constructing an instance of a [`DBusProxy`][crate::DBusProxy] derived class.
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GDBusProxyFlags&quot;</span>)]
@@ -4920,7 +4920,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags used when sending `GDBusMessages` on a [`DBusConnection`][crate::DBusConnection].
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GDBusSendMessageFlags&quot;</span>)]
@@ -5013,7 +5013,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags used when creating a [`DBusServer`][crate::DBusServer].
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GDBusServerFlags&quot;</span>)]
@@ -5114,7 +5114,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags used when subscribing to signals via [`DBusConnection::signal_subscribe()`][crate::DBusConnection::signal_subscribe()].
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GDBusSignalFlags&quot;</span>)]
@@ -5216,7 +5216,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags used when starting a drive.
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GDriveStartFlags&quot;</span>)]
@@ -5304,7 +5304,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags specifying the behaviour of an attribute.
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GFileAttributeInfoFlags&quot;</span>)]
@@ -5398,7 +5398,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags used when copying or moving files.
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GFileCopyFlags&quot;</span>)]
@@ -5504,7 +5504,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags used when an operation may create a file.
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GFileCreateFlags&quot;</span>)]
@@ -5608,7 +5608,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags that can be used with [`FileExtManual::measure_disk_usage()`][crate::prelude::FileExtManual::measure_disk_usage()].
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GFileMeasureFlags&quot;</span>)]
@@ -5714,7 +5714,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags used to set what a [`FileMonitor`][crate::FileMonitor] will watch for.
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GFileMonitorFlags&quot;</span>)]
@@ -5823,7 +5823,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags used when querying a [`FileInfo`][crate::FileInfo].
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GFileQueryInfoFlags&quot;</span>)]
@@ -5914,7 +5914,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// GIOStreamSpliceFlags determine how streams should be spliced.
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GIOStreamSpliceFlags&quot;</span>)]
@@ -6014,7 +6014,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags used when mounting a mount.
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GMountMountFlags&quot;</span>)]
@@ -6102,7 +6102,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags used when an unmounting a mount.
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GMountUnmountFlags&quot;</span>)]
@@ -6194,7 +6194,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// GOutputStreamSpliceFlags determine how streams should be spliced.
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GOutputStreamSpliceFlags&quot;</span>)]
@@ -6291,7 +6291,7 @@
 }
 
 <span class="attr">#[cfg(feature = <span class="string">&quot;v2_60&quot;</span>)]
-</span><a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+</span><span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags to modify lookup behavior.
     </span><span class="attr">#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_60&quot;</span>)))]
     #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
@@ -6404,7 +6404,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// GResourceLookupFlags determine how resource path lookups are handled.
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GResourceLookupFlags&quot;</span>)]
@@ -6492,7 +6492,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags used when creating a binding. These flags determine in which
     /// direction the binding works. The default is to synchronize in both
     /// directions.
@@ -6602,7 +6602,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags to define the behaviour of a [`Subprocess`][crate::Subprocess].
     ///
     /// Note that the default for stdin is to redirect from `/dev/null`. For
@@ -6743,7 +6743,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// A set of flags describing TLS certification validation. This can be
     /// used to describe why a particular certificate was rejected (for
     /// example, in [`accept-certificate`][struct@crate::TlsConnection#accept-certificate]).
@@ -6869,7 +6869,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags for [`TlsDatabaseExt::verify_chain()`][crate::prelude::TlsDatabaseExt::verify_chain()].
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GTlsDatabaseVerifyFlags&quot;</span>)]
@@ -6957,7 +6957,7 @@
     }
 }
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// Various flags for the password.
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = <span class="string">&quot;GTlsPasswordFlags&quot;</span>)]

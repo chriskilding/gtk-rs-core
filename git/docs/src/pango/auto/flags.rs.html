@@ -654,10 +654,10 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-</span><span class="kw">use </span>glib::{<a href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags::bitflags</a>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/prelude/index.html">prelude</a>::<span class="kw-2">*</span>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/index.html">translate</a>::<span class="kw-2">*</span>};
+</span><span class="kw">use </span>glib::{bitflags::bitflags, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/prelude/index.html">prelude</a>::<span class="kw-2">*</span>, <a href="https://gtk-rs.org/gtk-rs-core/git/docs/glib/translate/index.html">translate</a>::<span class="kw-2">*</span>};
 <span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/alloc/fmt/index.html">std::fmt</a>;
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+<span class="macro">bitflags! </span>{
     <span class="doccomment">/// The bits in a [`FontMask`][crate::FontMask] correspond to the set fields in a
     /// [`FontDescription`][crate::FontDescription].
     </span><span class="attr">#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
@@ -768,7 +768,7 @@
 }
 
 <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
-</span><a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+</span><span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags that influence the behavior of `Pango::Layout::deserialize()`.
     ///
     /// New members may be added to this enumeration over time.
@@ -882,7 +882,7 @@
 }
 
 <span class="attr">#[cfg(feature = <span class="string">&quot;v1_50&quot;</span>)]
-</span><a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+</span><span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags that influence the behavior of [`Layout::serialize()`][crate::Layout::serialize()].
     ///
     /// New members may be added to this enumeration over time.
@@ -998,7 +998,7 @@
 }
 
 <span class="attr">#[cfg(feature = <span class="string">&quot;v1_44&quot;</span>)]
-</span><a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+</span><span class="macro">bitflags! </span>{
     <span class="doccomment">/// Flags influencing the shaping process.
     ///
     /// [`ShapeFlags`][crate::ShapeFlags] can be passed to [`shape_with_flags()`][crate::shape_with_flags()].
@@ -1112,7 +1112,7 @@
 }
 
 <span class="attr">#[cfg(feature = <span class="string">&quot;v1_44&quot;</span>)]
-</span><a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags! </a>{
+</span><span class="macro">bitflags! </span>{
     <span class="doccomment">/// These flags affect how Pango treats characters that are normally
     /// not visible in the output.
     </span><span class="attr">#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v1_44&quot;</span>)))]

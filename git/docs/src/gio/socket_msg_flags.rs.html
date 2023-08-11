@@ -155,9 +155,9 @@
 
 </span><span class="kw">use </span><a href="https://doc.rust-lang.org/nightly/alloc/fmt/index.html">std::fmt</a>;
 
-<span class="kw">use </span>glib::{<a href="https://docs.rs/bitflags/2.3.3/bitflags/index.html">bitflags</a>, <a href="../../glib/prelude/index.html">prelude</a>::<span class="kw-2">*</span>, <a href="../../glib/translate/index.html">translate</a>::<span class="kw-2">*</span>, <a href="../../glib/value/trait.FromValue.html">value::FromValue</a>, <a href="../../glib/types/struct.Type.html">Type</a>};
+<span class="kw">use </span>glib::{bitflags, <a href="../../glib/prelude/index.html">prelude</a>::<span class="kw-2">*</span>, <a href="../../glib/translate/index.html">translate</a>::<span class="kw-2">*</span>, <a href="../../glib/value/trait.FromValue.html">value::FromValue</a>, <a href="../../glib/types/struct.Type.html">Type</a>};
 
-<a class="macro" href="https://docs.rs/bitflags/2.3.3/bitflags/macro.bitflags.html">bitflags::bitflags! </a>{
+<span class="macro">bitflags::bitflags! </span>{
     <span class="attr">#[doc(alias = <span class="string">&quot;GSocketMsgFlags&quot;</span>)]
     #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     </span><span class="kw">pub struct </span><a href="../../gio/struct.SocketMsgFlags.html">SocketMsgFlags</a>: ffi::GSocketMsgFlags {
