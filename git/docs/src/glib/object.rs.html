@@ -7794,7 +7794,7 @@
             <a href="#3146">pspec</a>.<a href="translate.rs.html#437">to_glib_none</a>().<span class="number">0</span>,
             <a href="#3147">property_value</a>.<a href="translate.rs.html#467">to_glib_none_mut</a>().<span class="number">0</span>,
         ));
-        <span class="kw">let </span>change_allowed = <a href="#3146">pspec</a>.<a href="param_spec.rs.html#203-205">flags</a>().<a href="gobject/flags.rs.html#5-75">contains</a>(<span class="kw">crate</span>::ParamFlags::LAX_VALIDATION);
+        <span class="kw">let </span>change_allowed = <a href="#3146">pspec</a>.<a href="param_spec.rs.html#203-205">flags</a>().<a href="gobject/flags.rs.html#5-54">contains</a>(<span class="kw">crate</span>::ParamFlags::LAX_VALIDATION);
         <span class="kw">if </span>changed &amp;&amp; !change_allowed {
             <a class="macro" href="https://doc.rust-lang.org/nightly/std/macro.panic.html">panic!</a>(
                 <span class="string">&quot;property &#39;{}&#39; of type &#39;{type_}&#39; can&#39;t be set from given value, it is invalid or out of range&quot;</span>,
@@ -8346,7 +8346,7 @@
                         transform_data.<span class="number">3</span>.value_type(),
                         res.type_()
                     );
-                    <span class="kw-2">*</span><a href="#3715">to_value</a> = <a href="#3726">res</a>.<a href="value.rs.html#658-663">into_raw</a>();
+                    <span class="kw-2">*</span><a href="#3715">to_value</a> = <a href="#3726">res</a>.<a href="value.rs.html#673-678">into_raw</a>();
                     <span class="bool-val">true
                 </span>}
             }
@@ -8375,7 +8375,7 @@
                         transform_data.<span class="number">2</span>.value_type(),
                         res.type_()
                     );
-                    <span class="kw-2">*</span><a href="#3744">to_value</a> = <a href="#3755">res</a>.<a href="value.rs.html#658-663">into_raw</a>();
+                    <span class="kw-2">*</span><a href="#3744">to_value</a> = <a href="#3755">res</a>.<a href="value.rs.html#673-678">into_raw</a>();
                     <span class="bool-val">true
                 </span>}
             }
