@@ -1044,7 +1044,7 @@
 <span class="kw">use crate</span>::{
     <a href="lib.rs.html#142">translate</a>::<span class="kw-2">*</span>,
     value::{<a href="value.rs.html#270-281">FromValue</a>, <a href="value.rs.html#95-99">ValueTypeChecker</a>},
-    <a href="param_spec.rs.html#2069-2077">HasParamSpec</a>, <a href="param_spec.rs.html#984">ParamSpecEnum</a>, <a href="param_spec.rs.html#1132">ParamSpecFlags</a>, <a href="types.rs.html#248-252">StaticType</a>, <a href="types.rs.html#22">Type</a>, <a href="value.rs.html#476-510">Value</a>,
+    <a href="param_spec.rs.html#2139-2147">HasParamSpec</a>, <a href="param_spec.rs.html#1054">ParamSpecEnum</a>, <a href="param_spec.rs.html#1202">ParamSpecFlags</a>, <a href="types.rs.html#248-252">StaticType</a>, <a href="types.rs.html#22">Type</a>, <a href="value.rs.html#476-510">Value</a>,
 };
 
 <span class="attr">#[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
@@ -1110,7 +1110,7 @@
     </span><span class="doccomment">/// Create a new `EnumClass` from a static type `T`.
     ///
     /// Panics if `T` is not representing an enum.
-    </span><span class="kw">pub fn </span>new&lt;T: <a href="types.rs.html#248-252">StaticType</a> + HasParamSpec&lt;ParamSpec = <a href="param_spec.rs.html#984">ParamSpecEnum</a>&gt;&gt;() -&gt; <span class="self">Self </span>{
+    </span><span class="kw">pub fn </span>new&lt;T: <a href="types.rs.html#248-252">StaticType</a> + HasParamSpec&lt;ParamSpec = <a href="param_spec.rs.html#1054">ParamSpecEnum</a>&gt;&gt;() -&gt; <span class="self">Self </span>{
         <span class="self">Self</span>::with_type(T::static_type()).expect(<span class="string">&quot;invalid enum class&quot;</span>)
     }
     <span class="comment">// rustdoc-stripper-ignore-next
@@ -1391,7 +1391,7 @@
     </span><span class="doccomment">/// Create a new `FlagsClass` from a static type `T`.
     ///
     /// Panics if `T` is not representing an flags type.
-    </span><span class="kw">pub fn </span>new&lt;T: <a href="types.rs.html#248-252">StaticType</a> + HasParamSpec&lt;ParamSpec = <a href="param_spec.rs.html#1132">ParamSpecFlags</a>&gt;&gt;() -&gt; <span class="self">Self </span>{
+    </span><span class="kw">pub fn </span>new&lt;T: <a href="types.rs.html#248-252">StaticType</a> + HasParamSpec&lt;ParamSpec = <a href="param_spec.rs.html#1202">ParamSpecFlags</a>&gt;&gt;() -&gt; <span class="self">Self </span>{
         <span class="self">Self</span>::with_type(T::static_type()).expect(<span class="string">&quot;invalid flags class&quot;</span>)
     }
     <span class="comment">// rustdoc-stripper-ignore-next
